@@ -1,0 +1,501 @@
+{
+  "Questions": [
+    {
+      "id": 1,
+      "mtype": "singlebutton",
+      "dmessage": "<p>Namaskar! I am Dr. Anita, your personal health assistant, How may I help you?</p>",
+      "message": "Namaskar! I am Dr. Anita, your personal health assistant, How may I help you?",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Need information for covid 19 management",
+          "click": "2"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 2,
+      "mtype": "inputtextbox",
+      "dmessage": "<p>Ok, </p><p>What is the age of Child (in Years) </p><p>(If Child is less than 1 year, Please enter 0)</p>",
+      "message": "What is the age of Child (in Years)?",
+      "input": [
+        {
+          "format": "auto",
+          "min": 0,
+          "max": 17,
+          "click": "3"
+        }
+      ],
+      "buttons": [],
+      "cards": [],
+      "conditions": [
+        {
+          "qcondition": "IF @VAR EQUALS 0",
+          "istrue": "3",
+          "isfalse": "4"
+        }
+      ]
+
+    },
+    {
+      "id": 3,
+      "mtype": "inputtextbox",
+      "dmessage": "<p>Weight of Child (In Kg)</p>",
+      "message": "Weight of Child (In Kg)",
+      "input": [
+        {
+          "format": "auto",
+          "min": 1,
+          "max": 90,
+          "click": "4"
+        }
+      ],
+      "buttons": [],
+      "cards": [],
+      "conditions": []
+
+    },
+    {
+      "id": 4,
+      "mtype": "cardoption",
+      "dmessage": "<p> <strong>Present With:</strong></p><p>(You can select more than one)</p>",
+      "message": "",
+      "input": [],
+      "buttons": [],
+      "cards": [
+        {
+          "items": [
+            {
+              "name": "Fever"
+            },
+            {
+              "name": "Common Cold"
+            },
+            {
+              "name": "Cough"
+            },
+            {
+              "name": "Breathing difficulties"
+            },
+            {
+              "name": "Rash"
+            },
+            {
+              "name": "Conjunctivitis in both Eyes"
+            },
+            {
+              "name": "Diarrhoea"
+            },
+            {
+              "name": "Vomiting"
+            },
+            {
+              "name": "Abdominal Pain"
+            },
+            {
+              "name": "Rhinorrhoea"
+            },
+            {
+              "name": "Loss of test/smell"
+            },
+            {
+              "name": "No symptom"
+            }
+          ],
+          "click": "5"
+        }
+      ],
+      "conditions": []
+
+    },
+    {
+      "id": 5,
+      "mtype": "multibutton",
+      "dmessage": "<p>Tested Positive for Covid</p>",
+      "message": "Tested Positive for Covid",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Yes",
+          "click": "6"
+        },
+        {
+          "text": "No",
+          "click": "7"
+        },
+        {
+          "text": "Test not done",
+          "click": "7"
+        },
+        {
+          "text": "Result Awaited",
+          "click": "7"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 6,
+      "mtype": "cardoption",
+      "dmessage": "<p> Does child have Past illness of following ?</p><p>(You can select more than one - in no any history: select 'None')</p>",
+      "message": "",
+      "input": [],
+      "buttons": [],
+      "cards": [
+        {
+          "items": [
+            {
+              "name": "Lung Disease"
+            },
+            {
+              "name": "Kidney Disease"
+            },
+            {
+              "name": "Liver Disease"
+            },
+            {
+              "name": "Malignancy"
+            },
+            {
+              "name": "Genetic Syndrome"
+            },
+            {
+              "name": "None"
+            }
+          ],
+          "click": "8"
+        }
+      ],
+      "conditions": []
+    },
+    {
+      "id": 7,
+      "mtype": "multibutton",
+      "dmessage": "<p>History of contact with covid-19 case in last 2 weeks</p>",
+      "message": "History of contact with covid-19 case in last 2 weeks",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Yes",
+          "click": "6"
+        },
+        {
+          "text": "No",
+          "click": "6"
+        },
+        {
+          "text": "Don't know",
+          "click": "6"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 8,
+      "mtype": "inputtextbox",
+      "dmessage": "<p>Fever since how many days</p>",
+      "message": "Fever since how many days",
+      "input": [
+        {
+          "format": "auto",
+          "min": 1,
+          "max": 15,
+          "click": "9"
+        }
+      ],
+      "buttons": [],
+      "cards": [],
+      "conditions": []
+
+    },
+    {
+      "id": 9,
+      "mtype": "inputtextbox",
+      "dmessage": "<p>Breath count in 1 min (Respiratory Rate)</p>",
+      "message": "Breath count in 1 min (Respiratory Rate)",
+      "input": [
+        {
+          "format": "auto",
+          "min": 1,
+          "max": 15,
+          "click": "10"
+        }
+      ],
+      "buttons": [],
+      "cards": [],
+      "conditions": []
+
+    },
+    {
+      "id": 10,
+      "mtype": "multibutton",
+      "dmessage": "<p>Nostrils widen while breathing (Nasal flaring)</p>",
+      "message": "Nostrils widen while breathing (Nasal flaring)",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Yes",
+          "click": "11"
+        },
+        {
+          "text": "No",
+          "click": "11"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 11,
+      "mtype": "multibutton",
+      "dmessage": "<p>Noise during breathing(Grunting)</p>",
+      "message": "Noise during breathing(Grunting)",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Yes",
+          "click": "12"
+        },
+        {
+          "text": "No",
+          "click": "12"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 12,
+      "mtype": "multibutton",
+      "dmessage": "<p>Chest wall going inward while breathing(severe Chest indrawing)</p>",
+      "message": "Chest wall going inward while breathing(severe Chest indrawing)",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Yes",
+          "click": "13"
+        },
+        {
+          "text": "No",
+          "click": "13"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 13,
+      "mtype": "multibutton",
+      "dmessage": "<p>Temperature(In celsius)</p>",
+      "message": "Temperature(In celsius)",
+      "input": [],
+      "buttons": [
+        {
+          "text": "<= 35 °C (95 °F)(Cold to touch)",
+          "click": "14"
+        },
+        {
+          "text": "35.1 - 35.9 °C (95.1 - 96.6 °F)",
+          "click": "14"
+        },
+        {
+          "text": "36 - 36.9 °C (96.7 - 98.4 °F)",
+          "click": "14"
+        },
+        {
+          "text": "37 - 37.9 °C (98.5 - 100.2 °F)",
+          "click": "14"
+        },
+        {
+          "text": "38 - 38.9 °C (100.3 - 102 °F) (Hot to Touch)",
+          "click": "14"
+        },
+        {
+          "text": ">= 39 °C (102.1 °F) (Very hot to touch)",
+          "click": "14"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 14,
+      "mtype": "multibutton",
+      "dmessage": "<p>Does child undergone for any recent Blood investigations?</p>",
+      "message": "Does child undergone for any recent Blood investigations?",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Yes",
+          "click": "15"
+        },
+        {
+          "text": "No",
+          "click": "16"
+        },
+        {
+          "text": "Does not have report ",
+          "click": "16"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 15,
+      "mtype": "cardoption",
+      "dmessage": "<p> (You can select more than one - if there is no such report/s select 'Does not have any of these')</p>",
+      "message": "",
+      "input": [],
+      "buttons": [],
+      "cards": [
+        {
+          "items": [
+            {
+              "name": "High ESR"
+            },
+            {
+              "name": "High CRP"
+            },
+            {
+              "name": "Elevated D-Dimer"
+            },
+            {
+              "name": "High PT/PTT"
+            },
+            {
+              "name": "Does not have any of these"
+            }
+          ],
+          "click": "16"
+        }
+      ],
+      "conditions": []
+    },
+    {
+      "id": 16,
+      "mtype": "multibutton",
+      "dmessage": "<p>SPO2 (Oxygen saturation) Measured?</p>",
+      "message": "SPO2 (Oxygen saturation) Measured?",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Yes",
+          "click": "17"
+        },
+        {
+          "text": "No",
+          "click": "18"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 17,
+      "mtype": "inputtextbox",
+      "dmessage": "<p>SPO2</p>",
+      "message": "SPO2",
+      "input": [
+        {
+          "format": "auto",
+          "min": 50,
+          "max": 5000,
+          "click": "18"
+        }
+      ],
+      "buttons": [],
+      "cards": [],
+      "conditions": []
+
+    },
+    {
+      "id": 18,
+      "mtype": "multibutton",
+      "dmessage": "<p>Covid 19 Rapid antigen test result</p>",
+      "message": "Covid 19 Rapid antigen test result",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Positive",
+          "click": "19"
+        },
+        {
+          "text": "Negative",
+          "click": "19"
+        },
+        {
+          "text": "Not Conducted",
+          "click": "19"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 19,
+      "mtype": "cardoption",
+      "dmessage": "<p>Look for associated Danger sign/s:</p><p>(You can select more than one - if no any sign: select 'None')</p>",
+      "message": "Look for associated Danger sign/s",
+      "input": [],
+      "buttons": [],
+      "cards": [
+        {
+          "items": [
+            {
+              "name": "Lethargic/Unconscious"
+            },
+            {
+              "name": "Convulsion/History of Convulsion"
+            },
+            {
+              "name": "Movement less than Normal"
+            },
+            {
+              "name": "Cold Extremities"
+            },
+            {
+              "name": "Unable to drink/feed"
+            },
+            {
+              "name": "Vomit every thing"
+            },
+            {
+              "name": "Sunken Eyes/Dry mouth"
+            },
+            {
+              "name": "Skin goes back Slowly (<= 2 sec)"
+            },
+            {
+              "name": "Skin pinch goes back very slowly (> 2 sec)"
+            },
+            {
+              "name": "Cyanosis"
+            },
+            {
+              "name": "None"
+            }
+          ],
+          "click": "20"
+        }
+      ],
+      "conditions": []
+    },
+    {
+      "id": 20,
+      "mtype": "multibutton",
+      "dmessage": "<p>'Refer Immediately to Paediatric DCH/HDU/ICU for COVID 19 management'</p><p>'Give pre referral dose of Oral Amoxicillin and PCM'</p><p>Tab/Syp Amoxicillin : 50 mg</p><p>Thank you for submitting record.</p>",
+      "message": "",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Edit Record",
+          "click": "2"
+        },
+        {
+          "text": "New Record",
+          "click": "1"
+        },
+        {
+          "text": "Close",
+          "click": "0"
+        }
+      ],
+      "cards": []
+    }
+  ]
+}

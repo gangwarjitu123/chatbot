@@ -1,0 +1,382 @@
+{
+  "font": "Lato",
+  "text": {
+    "inline_input_placeholder": "Type your @field here...",
+    "text_input_placeholder": "Type here...",
+    "fields": [
+      "name",
+      "phone",
+      "email",
+      "postal code",
+      "address",
+      "country",
+      "birthdate"
+    ],
+    "autocomplete_input_placeholder": "Type to search options...",
+    "input_menu_help": "Choose an option",
+    "input_multi_help": "Choose at least one",
+    "input_multi_range_help": "Choose at least @min_options and up to @max_options",
+    "input_instant_search_help": "Filter the options",
+    "input_text_help": "Press enter to send",
+    "input_autocomplete_help": "Press enter to select",
+    "input_rating_help": "Click on the icons",
+    "input_file_help": "Drop a file here",
+    "input_files_help": "Drop your files here",
+    "input_file_instructions_help": "Max @maxfilesize",
+    "input_files_instructions_help": "Up to @maxfiles | Max @maxfilesize each",
+    "input_file_max_help": "You can only upload one file",
+    "input_files_max_help": "You can only upload up to @maxfiles files",
+    "no_results_found": "No results found",
+    "input_number_help_min": "Minimum value is @field",
+    "input_number_help_max": "Maximum value is @field",
+    "send": "Send",
+    "back": "Back",
+    "search": "Search",
+    "select_file": "Select a file",
+    "select_files": "Select files",
+    "next": "Next",
+    "select": "Select",
+    "open_file": "Open file",
+    "hto_assignation_message": "@agent just joined the conversation!",
+    "hto_agent_profile_text": "A human at Landbot",
+    "stripe_pay_button_label": "Pay @amount",
+    "error_input_date": "Please enter a valid date (@format)",
+    "error": "\u26a0\ufe0f  It seems there is a technical problem. Please reload this page",
+    "customValidationErrorEnable": false
+  },
+  "dark": "#34495E",
+  "welcome": [
+    {
+      "samurai": -1,
+      "extra": {
+        "id": "welcome_0",
+        "welcome": true,
+        "hide_textbox": true
+      },
+      "type": "text",
+      "message": "Hi there! \ud83d\udc4b",
+      "rich_text": "<p>Hi there! \ud83d\udc4b</p>"
+    },
+    {
+      "samurai": -1,
+      "extra": {
+        "id": "welcome_1",
+        "welcome": true,
+        "hide_textbox": true
+      },
+      "type": "text",
+      "message": "Thanks for getting in touch with Landbot's team!",
+      "rich_text": "<p>Thanks for getting in touch with Landbot's team!</p>"
+    },
+    {
+      "samurai": -1,
+      "extra": {
+        "id": "welcome_1",
+        "welcome": true,
+        "legal": {
+          "state": false,
+          "text": "*By clicking you are accepting our",
+          "link": "https://",
+          "linkText": "Privacy Policy"
+        },
+        "buttons": {
+          "includes": [
+            "none"
+          ]
+        }
+      },
+      "type": "media_dialog",
+      "media_type": "image",
+      "buttons": [
+        "Hi!"
+      ],
+      "payloads": [
+        "$0"
+      ],
+      "url": "https://media1.giphy.com/media/qQh0DBncuFJwQ/giphy.gif",
+      "urls": [
+        null
+      ]
+    }
+  ],
+  "light": "#FFFFFF",
+  "colors": {
+    "bot_message_background": "#FFFFFF",
+    "bot_message_text": "#34495E",
+    "button_background": "rgba(59,64, 94, 1)",
+    "button_text": "#FFFFFF",
+    "header_text": "#FFFFFF",
+    "textarea_background": "#FFFFFF",
+    "textarea_border": "rgba(59,64, 94, 1)",
+    "textarea_text": "#34495E",
+    "user_message_background": "rgba(59,64, 94, 1)",
+    "user_message_text": "#FFFFFF",
+    "inline_input_border": "#de4561",
+    "inline_input_background": "#FFFFFF",
+    "inline_input_placeholder": "#34495E",
+    "inline_input_focus_border": "#de4561",
+    "inline_input_focus_background": "#FFFFFF",
+    "inline_input_focus_placeholder": "#34495E",
+    "inline_input_hover_border": "#de4561",
+    "input_fullwidth_bg": "#FFFFFF"
+  },
+  "accent": "rgba(59,64, 94, 1)",
+  "design": {
+    "base_color_button": "rgba(100, 135, 228, 1)",
+    "base_color_background": "rgba(255, 249, 236, 1)",
+    "base_color_message": "rgba(247, 240, 224, 1)",
+    "base_color_text": "rgba(14, 37, 63, 1)",
+    "background_type": "solid",
+    "background_color": "rgba(255, 255, 255, 1)",
+    "background_color_gradient_from": "#00B2A9",
+    "background_color_gradient_to": "#55E2BA",
+    "background_image": "https://storage.googleapis.com/media.yexir.com/channels_back/31.png",
+    "background_image_mobile": "https://storage.googleapis.com/media.yexir.com/channels_back/31.png",
+    "background_color_mask": "rgba(0,0,0,.1)",
+    "background_video_type": "defaults",
+    "background_video_webm": "https://static.landbot.io/landbot/video/video_1.webm",
+    "background_video_mp4": "https://static.landbot.io/landbot/video/video_1.mp4",
+    "header_visible": true,
+    "header_background_color": "rgba(58, 61, 92, 1)",
+    "header_text": "rgba(255, 255, 255, 1)",
+    "header_logo": "https://storage.googleapis.com/media.helloumi.com/brands/helloumi.png",
+    "top_bar_separator": false,
+    "top_bar_separator_color": "#2F324A",
+    "message_shape": "semirounded",
+    "message_background_color_bot": "rgba(231, 236, 247, 1)",
+    "message_color_bot": "rgba(58, 61, 92, 1)",
+    "message_background_color_user": "rgba(224, 38, 120, 1)",
+    "message_color_user": "rgba(255, 255, 255, 1)",
+    "border_radius": 7,
+    "form_buttons_border_color": "rgba(228, 99, 114, 0)",
+    "form_buttons_background_color": "rgba(224, 38, 120, 1)",
+    "form_buttons_color": "#FFFFFF",
+    "form_inputs_background_color": "rgba(255, 255, 255, 1)",
+    "form_inputs_border_color": "rgba(224, 38, 120, 1)",
+    "form_inputs_color": "rgba(58, 61, 92, 1)",
+    "form_help_color": "rgba(58, 61, 92, 1)",
+    "form_input_fullwidth_background_color": "#F1F2F9",
+    "font_size": 16,
+    "font_family": "Montserrat",
+    "avatar_enabled": true,
+    "avatar_url": "https://static.landbot.io/daisho/img/avatar-landbot-15.png",
+    "avatar_shape": "original",
+    "avatar_scale": 1.0999999999999999,
+    "template_id": 19,
+    "launcher_custom": true,
+    "launcher_image": "https://storage.googleapis.com/media.helloumi.com/brands/helloumi.png",
+    "launcher_type": "default",
+    "launcher_background": "rgba(224, 38, 120, 1)",
+    "back_button_visible": true,
+    "google_api_key": null,
+    "design_mode": "advanced"
+  },
+  "version": "3.0.0",
+  "revisit": [
+    {
+      "type": "dialog",
+      "title": "Hey! This is not the first time you are here. What would you like to do?",
+      "buttons": [
+        "START AGAIN",
+        "CONTINUE"
+      ],
+      "payloads": [
+        "#init",
+        "#_continue"
+      ],
+      "samurai": "-1"
+    }
+  ],
+  "logo": "",
+  "contrast": "#FFFFFF",
+  "storage_off": true,
+  "font_size": 16,
+  "tagline": "Our Business Development team is here to help! \ud83d\ude80",
+  "avatar_url": "https://static.landbot.io/daisho/img/avatar-landbot-15.png",
+  "branding": true,
+  "revisit_off": true,
+  "gradient_to": "#55e2ba",
+  "staticUrl": "https://static.landbot.io/",
+  "brandID": 51550,
+  "channelToken": "H-934337-18QCU0C1Y2OZJ1RR",
+  "serverUrl": "https://messages.landbot.io/",
+  "filter_color": "#000000",
+  "avatar_scale": 1.0,
+  "videoname": "video_1",
+  "hidden_fields": {
+    "source": {
+
+    },
+    "company_size": {
+
+    },
+    "use_case": {
+
+    },
+    "industry": {
+
+    },
+    "brand_id": {
+
+    },
+    "plan": {
+
+    },
+    "pver": {
+
+    },
+    "email": {
+
+    },
+    "company": {
+
+    }
+  },
+  "gradient_from": "#00b2a9",
+  "typing_options": {
+    "state": true
+  },
+  "persistent_menu": [
+
+  ],
+  "background_color": "rgba(161,167, 197, 1)",
+  "header_background": "rgba(161,167, 197, 1)",
+  "brand_name": "Tell us about you",
+  "widget_hide_header": false,
+  "filter_gradient_to": "#FFE199",
+  "avatar_shape": "none",
+  "filter_gradient_from": "#FFAD59",
+  "background_image_url": "https://storage.googleapis.com/media.yexir.com/channels_back/31.png",
+  "widget_hide_background": false,
+  "conditional_proactives": {
+    "enabled": true,
+    "timeout": 3,
+    "chain": {
+      "template": "chat",
+      "params": {
+        "messages": [
+          {
+            "entity": "text",
+            "text": "We both know you want to know more about *pricing*, right?",
+            "id": "$0",
+            "richText": "<p>We both know you want to know more about <strong>pricing</strong>, right?</p>",
+            "rawText": {
+              "blocks": [
+                {
+                  "key": "bom41",
+                  "text": "We both know you want to know more about pricing, right?",
+                  "type": "unstyled",
+                  "depth": 0,
+                  "inlineStyleRanges": [
+                    {
+                      "offset": 41,
+                      "length": 7,
+                      "style": "BOLD"
+                    }
+                  ],
+                  "entityRanges": [
+
+                  ],
+                  "data": {
+
+                  }
+                }
+              ],
+              "entityMap": {
+
+              }
+            }
+          },
+          {
+            "entity": "text",
+            "text": "Click below \ud83d\udc47 and let's get this started!",
+            "richText": "<p>Click below \ud83d\udc47 and let's get this started! </p>",
+            "rawText": {
+              "blocks": [
+                {
+                  "key": "fj3k8",
+                  "text": "Click below \ud83d\udc47 and let's get this started! ",
+                  "type": "unstyled",
+                  "depth": 0,
+                  "inlineStyleRanges": [
+
+                  ],
+                  "entityRanges": [
+
+                  ],
+                  "data": {
+
+                  }
+                }
+              ],
+              "entityMap": {
+
+              }
+            },
+            "id": "$1"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "You guessed right!",
+            "payload": "$0"
+          }
+        ],
+        "destination": "options"
+      },
+      "id": "proactive",
+      "path": "proactive",
+      "top": 0,
+      "left": 0,
+      "isTarget": true,
+      "endpointType": "input"
+    },
+    "messages": [
+      {
+        "samurai": -1,
+        "extra": {
+          "id": "undefined_0",
+          "hide_textbox": true
+        },
+        "type": "text",
+        "message": "We both know you want to know more about *pricing*, right?",
+        "rich_text": "<p>We both know you want to know more about <strong>pricing</strong>, right?</p>"
+      },
+      {
+        "samurai": -1,
+        "extra": {
+          "id": "undefined_1",
+          "buttons": {
+
+          }
+        },
+        "type": "dialog",
+        "title": "Click below \ud83d\udc47 and let's get this started!",
+        "rich_text": "<p>Click below \ud83d\udc47 and let's get this started! </p>",
+        "buttons": [
+          "You guessed right!"
+        ],
+        "payloads": [
+          "$0"
+        ],
+        "urls": [
+          null
+        ]
+      }
+    ]
+  },
+  "filter_type": "none",
+  "style": ".MessageDate{\ndisplay:none\n}",
+  "foot": "",
+  "background_type": "color",
+  "background_image_mobile_url": "",
+  "apiKey": "AIzaSyAzT_5GGsNISwUvpqpIMGhpqFmhsMMjuxg",
+  "databaseURL": "https://daisho.firebaseio.com",
+  "storageBucket": "firebase-daisho.appspot.com",
+  "authDomain": "daisho.firebaseapp.com",
+  "keywords": {
+    "#back": "back",
+    "#init": "init"
+  },
+  "welcomeUrl": "https://welcome.landbot.io/"
+}
