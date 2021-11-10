@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Data\\ChatBot\\ChatBot.csproj": {}
+    "D:\\Parmod\\ChatBoot\\ChatBot.csproj": {}
   },
   "projects": {
-    "F:\\Data\\ChatBot\\ChatBot.csproj": {
+    "D:\\Parmod\\ChatBoot\\ChatBot.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Data\\ChatBot\\ChatBot.csproj",
+        "projectUniqueName": "D:\\Parmod\\ChatBoot\\ChatBot.csproj",
         "projectName": "ChatBot",
-        "projectPath": "F:\\Data\\ChatBot\\ChatBot.csproj",
-        "packagesPath": "C:\\Users\\aldga\\.nuget\\packages\\",
-        "outputPath": "F:\\Data\\ChatBot\\obj\\",
+        "projectPath": "D:\\Parmod\\ChatBoot\\ChatBot.csproj",
+        "packagesPath": "C:\\Users\\Vinod Gupta\\.nuget\\packages\\",
+        "outputPath": "D:\\Parmod\\ChatBoot\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\aldga\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vinod Gupta\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,9 +43,25 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.19, )"
+            },
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
               "version": "[3.1.18, )"
+            },
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[2.13.1, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.13.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             }
           },
           "imports": [
@@ -63,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

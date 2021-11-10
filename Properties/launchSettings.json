@@ -18,7 +18,7 @@
     "ChatBot": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://103.248.60.70:9001",
+      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
