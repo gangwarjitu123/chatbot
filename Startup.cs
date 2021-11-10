@@ -1,8 +1,12 @@
+using ChatBot.Infrastructure.MongoSetting;
+using ChatBot.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +26,24 @@ namespace ChatBot
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.Configure<FormOptions>(options =>
+            {
+                options.MultipartBodyLengthLimit = long.MaxValue;
+            });
+            //services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            services.Configure<MongoDbSettings>(Configuration.GetSection("MongoDbSettings"));
+
+            services.AddSingleton<IMongoDbSettings>(serviceProvider =>
+                serviceProvider.GetRequiredService<IOptions<MongoDbSettings>>().Value);
+
+            services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
+            services.AddControllersWithViews().AddSessionStateTempDataProvider()
+      .AddNewtonsoftJson(options =>
+      {
+
+          options.UseMemberCasing();
+      }).AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
