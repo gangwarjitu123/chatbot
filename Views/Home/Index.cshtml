@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="chat.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <title>Chat</title>
+    <style>
+        g {
+            display: none
+        }
+    </style>
 </head>
 
 <body>
@@ -93,7 +98,7 @@
         function LoadJsonData() {
             var jsonIssues;
             $.ajax({
-                url: "data.json",
+                url: "data1.json",
                 async: false,
                 dataType: 'json',
                 success: function (data) {
@@ -132,11 +137,11 @@
                     htmtxt += '<div class="option_Msg_item">' + cardItem[i].name + '</div>';
                 }
                 htmtxt += '</div>';
-                htmtxt += '<div class="btn_container"><div class="btn" data-obj="' + data.objname + '"  data-curentqid="' + data.id + '"  data-var="' + data.cards[0].click + '" onclick="AskNextQuestionCardOption(this);">Send</div></div>';
+                htmtxt += '<div class="btn_container"><div class="btn" data-obj="' + data.objname + '" data-parentid="' + data.parentid + '"  data-curentqid="' + data.id + '"  data-var="' + data.cards[0].click + '" onclick="AskNextQuestionCardOption(this);">Send</div></div>';
                 htmtxt += '</div>';
             }
             htmtxt += '<div class="back_btn_container">';
-            htmtxt += '<button type="button" class="back_btn">Back</button>';
+            htmtxt += '<button type="button" data-parentid="' + data.parentid + '" onclick="loadBackquestion(this);"  class="back_btn">Back</button>';
             htmtxt += '</div>';
             htmtxt += '</article>';
             setTimeout(function () {
@@ -176,8 +181,12 @@
             if (data.input.length > 0) {
                 htmtxt += '<p>';
                 htmtxt += '<div class="input_content inputsend">';
-                htmtxt += '<input type="number" class="input is-animate-messages-on inputdata" data-max="' + data.input[0].max + '" data-min="' + data.input[0].min + '" />';
-                htmtxt += '<button type="button" class="icon_btn btn_age_send" data-obj="' + data.objname + '" data-curentqid="' + data.id + '" data-var="' + data.input[0].click + '" onclick="AskNextQuestionInput(this);">';
+                if (data.input[0].format=="auto")
+                    htmtxt += '<input type="number" class="input is-animate-messages-on inputdata" data-max="' + data.input[0].max + '" data-min="' + data.input[0].min + '" />';
+                else
+                    htmtxt += '<input type="text" class="input is-animate-messages-on inputdata" data-max="' + data.input[0].max + '" data-min="' + data.input[0].min + '" />';
+
+                htmtxt += '<button type="button" class="icon_btn btn_age_send" data-obj="' + data.objname + '" data-parentid="' + data.parentid + '" data-curentqid="' + data.id + '" data-var="' + data.input[0].click + '" onclick="AskNextQuestionInput(this);">';
                 htmtxt += '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" x="3650"y="3688">';
                 htmtxt += '<path fill="#af8490" d="M1.1 21.757l22.7-9.73L1.1 2.3l.012 7.912 13.623 1.816-13.623 1.817-.01 7.912z"></path></svg></button>';
                 htmtxt += '<div class="icon_btn validate_icon_button padding_0" style="display: none;">';
@@ -232,13 +241,13 @@
             if (data.buttons.length > 0) {
                 htmtxt += '<div class="btn_group">';
                 for (var i = 0; i < data.buttons.length; i++) {
-                    htmtxt += '<button onclick="AskmultibuttonQuestion(this);" class="btn" data-obj="' + data.objname + '" data-curentqid="' + data.id + '" data-text="' + data.buttons[i].text + '" data-var="' + data.buttons[i].click + '">' + data.buttons[i].text + '</button>';
+                    htmtxt += '<button onclick="AskmultibuttonQuestion(this);" class="btn" data-obj="' + data.objname + '" data-parentid="' + data.parentid + '" data-curentqid="' + data.id + '" data-text="' + data.buttons[i].text + '" data-var="' + data.buttons[i].click + '">' + data.buttons[i].text + '</button>';
                 }
                 htmtxt += '</div>';
             }
 
             htmtxt += '<div class="back_btn_container">';
-            htmtxt += '<button type="button" class="back_btn">Back</button>';
+            htmtxt += '<button type="button" data-parentid="' + data.parentid + '" onclick="loadBackquestion(this);" class="back_btn">Back</button>';
             htmtxt += '</div>';
             htmtxt += '</article>';
             setTimeout(function () {
@@ -287,6 +296,8 @@
             var qtext = $(objthis).attr('data-text');
             var dataobj = $(objthis).attr('data-obj');
             var data = GetQuestionById(JData, cQid);
+            var curentqid = $(objthis).attr('data-curentqid');
+            var currentQuestion = GetQuestionById(JData, curentqid);
             switch (dataobj) {
                 case 'age':
                     age = qtext
@@ -356,12 +367,14 @@
                 LoadQuestion(data);
             }
             $(objthis).hide();
-            AddLog(qtext, data.message, dataobj, qtext);
+            AddLog(qtext, currentQuestion.message, dataobj, qtext);
         }
         function AskmultibuttonQuestion(objthis) {
             var dataobj = $(objthis).attr('data-obj');
             var cQid = $(objthis).attr('data-var');
             var qtext = $(objthis).attr('data-text');
+            var curentqid = $(objthis).attr('data-curentqid');
+            var currentQuestion = GetQuestionById(JData, curentqid);
             var data = GetQuestionById(JData, cQid);
             switch (dataobj) {
                 case 'age':
@@ -424,7 +437,7 @@
                 default:
                     break;
             }
-            
+
             LoadUserSentMessage(qtext);
             if (data.cards.length > 0) {
                 LoadCardOptionQuestion(data);
@@ -435,13 +448,15 @@
             }
             $(objthis).parent().hide();
             $(objthis).parent().parent().find('.inputsend').slideUp('fast');
-            AddLog(qtext, data.message, dataobj, qtext);
+            AddLog(qtext, currentQuestion.message, dataobj, qtext);
         }
         function AskNextQuestionInput(objthis) {
             var cQid = $(objthis).attr('data-var');
             var dataobj = $(objthis).attr('data-obj');
             var qtext = $(objthis).parent().find('.inputdata').val();
+            var curentqid = $(objthis).attr('data-curentqid');
             var data = GetQuestionById(JData, cQid);
+            var currentQuestion = GetQuestionById(JData, curentqid);
             switch (dataobj) {
                 case 'age':
                     age = qtext
@@ -515,12 +530,12 @@
             $(objthis).parent().hide();
             //$(objthis).parent().parent().find('.inputsend').hide();
             $(objthis).parent().parent().find('.inputsend').slideUp('fast');
-            AddLog(qtext, data.message, dataobj, qtext);
+            AddLog(qtext, currentQuestion.message, dataobj, qtext);
         }
         function AskNextQuestionCardOption(objthis) {
             var currentQId = $(objthis).attr('data-curentqid');
             var dataobj = $(objthis).attr('data-obj');
-            var cQid =$(objthis).attr('data-var');
+            var cQid = $(objthis).attr('data-var');
             var qtext = '';
 
             var nextQuestionId = 0;
@@ -602,44 +617,36 @@
                     break;
             }
 
-
-
-            if (condition.length > 0) {
-                for (var i = 0; i < condition.length; i++) {
-                    switch (condition[i].opp) {
-                        case '>':
-                            break;
-                        case 'contains':
-
-                            if (qtext.indexOf(condition[i].val) !== -1) {
-                                nextQuestionId = condition[i].true;
-                                alert(nextQuestionId);
-                            }
-                            break;
-                        case '>=':
-                            break;
-                        case '<':
-                            break;
-                        case '<=':
-                            break;
-                        default:
-                            break;
+            if (currentQId == 12) {
+                if (cQid == 0) {
+                    if (qtext.indexOf('None') != -1) {
+                        cQid = 13;
+                    } else if (qtext.indexOf('Jaundice') != -1) {
+                        cQid = 21;
+                    }
+                    else if (qtext.indexOf('Diarrhoea') != -1) {
+                        cQid = 23;
                     }
                 }
             }
+            if (currentQId == 27) {
+                if (cQid == 0) {
+                    if (qtext.indexOf('Fever') != -1) {
+                        cQid = 29;
+                    } else {
+                        cQid = 28;
+                    }
+                }
+            }
+
+
             if (nextQuestionId == 0) {
                 nextQuestionId = cQid;
             }
 
             var data = GetQuestionById(JData, nextQuestionId);
-            //if (qtext.indexOf('Fever') != -1) {
-            //    data = GetQuestionById(JData, 6);
-            //}
-            //else {
-            //    data = GetQuestionById(JData, 7);
-            //}
+
             LoadUserSentMessage(qtext);
-         //   $(objthis).parent().parent().find('.msg_footer').hide();
             $(objthis).parent().parent().hide();
             if (data.cards.length > 0) {
                 LoadCardOptionQuestion(data);
@@ -647,7 +654,7 @@
             else {
                 LoadQuestion(data);
             }
-            AddLog(qtext, data.message, dataobj, qtext);
+            AddLog(qtext, currentQuestion.message, dataobj, qtext);
         }
         function LoadWellcomeMessage() {
             var data = GetQuestionById(JData, 1);
@@ -656,6 +663,19 @@
         function GetQuestionById(jsonObject, id) {
 
             return jsonObject.filter(function (jsonObject) { return (jsonObject['id'] == id); })[0];
+        }
+
+        function loadBackquestion(objthis) {
+            var dataId = $(objthis).attr('data-parentid');
+            var data = GetQuestionById(JData, dataId);
+
+            $(objthis).parent().parent().hide();
+            if (data.cards.length > 0) {
+                LoadCardOptionQuestion(data);
+            }
+            else {
+                LoadQuestion(data);
+            }
         }
 
         function ScrollDown() {
@@ -702,7 +722,7 @@
             htmtxt += '</div>';
             htmtxt += '</div>';
             htmtxt += '</div>';
-            
+
             htmtxt += '</article>';
             setTimeout(function () {
                 $('.typeLoader').fadeOut();
@@ -742,12 +762,7 @@
             }
 
 
-           // PrintFinalAnswer('Hello User');
-            //alert("age:" + age);
-            //alert("weight:" + weight);
-            //alert("symtoms:" + symtoms);
-            //alert("covidtest:" + covidtest);
-            //alert("contactwithcovid:" + contactwithcovid);
+          
         }
         function PrintVariable2() {
             alert("feversince:" + feversince);
@@ -782,7 +797,7 @@
             $.ajax({
                 type: "POST",
                 url: '/Home/AddChatLog',
-                datatype:'json',
+                datatype: 'json',
                 data: sData,
                 success: function (reponse) {
 
@@ -791,7 +806,7 @@
                 }
             });
         }
-        
+
     </script>
 </body>
 

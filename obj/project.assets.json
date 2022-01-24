@@ -1196,11 +1196,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Parmod\\ChatBoot\\ChatBot.csproj",
+      "projectUniqueName": "D:\\GitCHATBOT-Landboat\\chatbot\\ChatBot.csproj",
       "projectName": "ChatBot",
-      "projectPath": "D:\\Parmod\\ChatBoot\\ChatBot.csproj",
+      "projectPath": "D:\\GitCHATBOT-Landboat\\chatbot\\ChatBot.csproj",
       "packagesPath": "C:\\Users\\Vinod Gupta\\.nuget\\packages\\",
-      "outputPath": "D:\\Parmod\\ChatBoot\\obj\\",
+      "outputPath": "D:\\GitCHATBOT-Landboat\\chatbot\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
