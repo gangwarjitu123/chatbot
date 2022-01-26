@@ -709,7 +709,6 @@ D:\GitCHATBOT-Landboat\chatbot\bin\Debug\netcoreapp3.1\runtimes\win\native\snapp
 D:\GitCHATBOT-Landboat\chatbot\bin\Debug\netcoreapp3.1\runtimes\linux\native\libmongocrypt.so
 D:\GitCHATBOT-Landboat\chatbot\bin\Debug\netcoreapp3.1\runtimes\osx\native\libmongocrypt.dylib
 D:\GitCHATBOT-Landboat\chatbot\bin\Debug\netcoreapp3.1\runtimes\win\native\mongocrypt.dll
-D:\GitCHATBOT-Landboat\chatbot\obj\Debug\netcoreapp3.1\ChatBot.csprojAssemblyReference.cache
 D:\GitCHATBOT-Landboat\chatbot\obj\Debug\netcoreapp3.1\ChatBot.AssemblyInfoInputs.cache
 D:\GitCHATBOT-Landboat\chatbot\obj\Debug\netcoreapp3.1\ChatBot.AssemblyInfo.cs
 D:\GitCHATBOT-Landboat\chatbot\obj\Debug\netcoreapp3.1\ChatBot.csproj.CoreCompileInputs.cache
