@@ -73,6 +73,7 @@
         var feversince = 0;
         var breathcount = 0;
         var nasalflaring = '';
+        var presentingwith = '';
         var pulserateapplicable = '';
         var pulserate = 0;
         var crt = 0;
@@ -181,7 +182,7 @@
             if (data.input.length > 0) {
                 htmtxt += '<p>';
                 htmtxt += '<div class="input_content inputsend">';
-                if (data.input[0].format=="auto")
+                if (data.input[0].format == "auto")
                     htmtxt += '<input type="number" class="input is-animate-messages-on inputdata" data-max="' + data.input[0].max + '" data-min="' + data.input[0].min + '" />';
                 else
                     htmtxt += '<input type="text" class="input is-animate-messages-on inputdata" data-max="' + data.input[0].max + '" data-min="' + data.input[0].min + '" />';
@@ -580,6 +581,9 @@
                 case 'nasalflaring':
                     nasalflaring = qtext
                     break;
+                case 'presentingwith':
+                    presentingwith = qtext
+                    break;
                 case 'pulserateapplicable':
                     pulserateapplicable = qtext
                     break;
@@ -617,26 +621,16 @@
                     break;
             }
 
-            if (currentQId == 12) {
-                if (cQid == 0) {
-                    if (qtext.indexOf('None') != -1) {
-                        cQid = 13;
-                    } else if (qtext.indexOf('Jaundice') != -1) {
-                        cQid = 21;
-                    }
-                    else if (qtext.indexOf('Diarrhoea') != -1) {
-                        cQid = 23;
-                    }
+           
+            if (currentQId == 6) {
+                if (qtext.indexOf('Fever') != -1) {
+                    cQid = 7;
+                } else {
+                    cQid = 8;
                 }
             }
-            if (currentQId == 27) {
-                if (cQid == 0) {
-                    if (qtext.indexOf('Fever') != -1) {
-                        cQid = 29;
-                    } else {
-                        cQid = 28;
-                    }
-                }
+            if (currentQId == 19) {
+                cQid = 20;
             }
 
 
@@ -664,6 +658,23 @@
 
             return jsonObject.filter(function (jsonObject) { return (jsonObject['id'] == id); })[0];
         }
+
+        //function GetQuestionById(jsonObject, id) {
+
+        //    $.ajax({
+        //        type: "GET",
+        //         async: false,
+        //        url: '/Home/GetQuestionById',
+        //        datatype: 'json',
+        //        data: { id:id},
+        //        success: function (reponse) {
+
+        //            return reponse;
+        //        },
+        //        error: function (result) {
+        //        }
+        //    });
+        //}
 
         function loadBackquestion(objthis) {
             var dataId = $(objthis).attr('data-parentid');
@@ -762,7 +773,7 @@
             }
 
 
-          
+
         }
         function PrintVariable2() {
             alert("feversince:" + feversince);
