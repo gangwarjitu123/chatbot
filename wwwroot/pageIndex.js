@@ -1,4 +1,4 @@
-        var age = 0;
+var ageinyear = 0;
         var weight = 0.1;
         var agemonths = 0;
         var symtoms = '';
@@ -234,8 +234,8 @@
             var curentqid = $(objthis).attr('data-curentqid');
             var currentQuestion = GetQuestionById(JData, curentqid);
             switch (dataobj) {
-                case 'age':
-                    age = qtext
+                case 'ageinyear':
+                    ageinyear = qtext
                     break;
                 case 'weight':
                     weight = qtext
@@ -311,19 +311,10 @@
             var setval = $(objthis).attr('data-setval');
             var curentqid = $(objthis).attr('data-curentqid');
             var currentQuestion = GetQuestionById(JData, curentqid);
-            if (curentqid == 17) {
-                if (covidtest == "Yes") {
-                    cQid = 19;
-                }
-                else {
-                    cQid = 18;
-                }
-            }
-
-            var data = GetQuestionById(JData, cQid);
+            
             switch (dataobj) {
-                case 'age':
-                    age = setval
+                case 'ageinyear':
+                    ageinyear = setval
                     break;
                 case 'weight':
                     weight = setval
@@ -382,7 +373,24 @@
                 default:
                     break;
             }
+            if (curentqid == 17) {
+                if (covidtest == "Yes") {
+                    cQid = 19;
+                }
+                else {
+                    cQid = 18;
+                }
+            }
+            if (curentqid == 38) {
+                if (covidtest == "Yes") {
+                    cQid = 40;
+                }
+                else {
+                    cQid = 39;
+                }
+            }
 
+            var data = GetQuestionById(JData, cQid);
             LoadUserSentMessage(qtext);
             if (data.cards.length > 0) {
                 LoadCardOptionQuestion(data);
@@ -400,11 +408,11 @@
             var dataobj = $(objthis).attr('data-obj');
             var qtext = $(objthis).parent().find('.inputdata').val();
             var curentqid = $(objthis).attr('data-curentqid');
-            var data = GetQuestionById(JData, cQid);
-            var currentQuestion = GetQuestionById(JData, curentqid);
+           
+            
             switch (dataobj) {
-                case 'age':
-                    age = qtext
+                case 'ageinyear':
+                    ageinyear = qtext
                     break;
                 case 'weight':
                     weight = qtext
@@ -464,6 +472,14 @@
                     break;
             }
 
+            if (curentqid == 25) {
+                if (ageinyear == 0) {
+                    cQid = 26;
+                }
+            }
+            var data = GetQuestionById(JData, cQid);
+            var currentQuestion = GetQuestionById(JData, curentqid);
+
             LoadUserSentMessage(qtext);
             if (data.cards.length > 0) {
                 LoadCardOptionQuestion(data);
@@ -501,8 +517,8 @@
             var condition = currentQuestion.conditions;
 
             switch (dataobj) {
-                case 'age':
-                    age = qtext
+                case 'ageinyear':
+                    ageinyear = qtext
                     break;
                 case 'weight':
                     weight = qtext
@@ -573,9 +589,16 @@
                     cQid = 8;
                 }
             }
-            if (currentQId == 19) {
-                cQid = 20;
+            if (currentQId == 28) {
+                if (qtext.indexOf('Fever') != -1) {
+                    cQid = 29;
+                } else {
+                    cQid = 30;
+                }
             }
+            //if (currentQId == 19) {
+            //    cQid = 20;
+            //}
 
 
             if (nextQuestionId == 0) {
@@ -584,7 +607,16 @@
             LoadUserSentMessage(qtext);
             AddLog(qtext, currentQuestion.message, dataobj, qtext);
 
-            if (cQid != 200) {
+            if (cQid == 200) {
+                summaryfunMorethen5();
+            }
+            else if (cQid == 300) {
+                //summaryfunMorethen5();
+            }
+            else if (cQid == 400) {
+               // summaryfunMorethen5();
+            }
+            else {
                 var data = GetQuestionById(JData, nextQuestionId);
 
                 $(objthis).parent().parent().hide();
@@ -594,10 +626,6 @@
                 else {
                     LoadQuestion(data);
                 }
-            }
-            else {
-
-                summaryfunMorethen5();
             }
         }
         function summaryfunMorethen5() {
@@ -871,59 +899,6 @@
             }
         }
 
-
-        function PrintVariable1() {
-            if (covidtest == 'Yes' || covidantigentest == 'Positive' || contactwithcovid == 'Yes') {
-                if (feversince > 2) {
-                    if (symtoms.indexOf('Diarrhoea') !== -1) {
-
-                    }
-                    else {
-
-                    }
-                }
-                else {
-
-                }
-            }
-            else {
-                if (age < 2 && breathcount > 59 && severechestindrawing == 'Yes') {
-                    if (nasalflaring == 'Yes' || noiseduringbreathing == 'Yes' || lookforassociated.indexOf('Cold Extremities') !== -1 || lookforassociated.indexOf('Unable to drink') !== -1) {
-
-                    }
-                    else {
-
-                    }
-                }
-                else {
-
-                }
-            }
-
-
-
-        }
-        function PrintVariable2() {
-            alert("feversince:" + feversince);
-            alert("breathcount:" + breathcount);
-            alert("nasalflaring:" + nasalflaring);
-            alert("pulserateapplicable:" + pulserateapplicable);
-            alert("pulserate:" + pulserate);
-        }
-        function PrintVariable3() {
-            alert("crt:" + crt);
-            alert("noiseduringbreathing:" + noiseduringbreathing);
-            alert("severechestindrawing:" + severechestindrawing);
-            alert("temperature:" + temperature);
-            alert("spo2applicable:" + spo2applicable);
-        }
-        function PrintVariable4() {
-            alert("spo2rate:" + spo2rate);
-            alert("covidantigentest:" + covidantigentest);
-            alert("lookforassociated:" + lookforassociated);
-            alert("historycondition:" + historycondition);
-        }
-
         function AddLog(Answer, Question, DataVariableName, DataVariableValue) {
             var sData = {
                 Question: Question,
@@ -946,7 +921,7 @@
             });
         }
         function restvaiable() {
-            age = 0;
+            ageinyear = 0;
             weight = 0.1;
             agemonths = 0;
             symtoms = '';

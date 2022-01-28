@@ -28,7 +28,7 @@
         {
           "text": "Yes",
           "val": "Yes",
-          "click": "8787878"
+          "click": "21"
         },
         {
           "text": "No",
@@ -44,7 +44,7 @@
       "objname": "startobjMorethen5",
       "mtype": "singlebutton",
       "dmessage": "<p>Sure! let me help you assess the child for COVID 19</p><p>(Click &ldquo;Okay&rdquo; to start assessment)</p>",
-      "message": "Sure! let me help you assess the child for COVID 19",
+      "message": "Okey",
       "input": [],
       "buttons": [
         {
@@ -595,19 +595,888 @@
       "buttons": [
         {
           "text": "eSanjeevani consultation",
+          "val": "eSanjeevani consultation",
           "click": "1"
         },
         {
           "text": "Edit Record",
+          "val": "Edit Record",
           "click": "1"
         },
         {
           "text": "Complete Assesment",
+          "val": "Complete Assesment",
           "click": "1"
         },
         {
           "text": "New Assessment",
+          "val": "New Assessment",
           "click": "1"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 21,
+      "parentid": 2,
+      "objname": "rchidapplicable",
+      "mtype": "multibutton",
+      "dmessage": "<p>RCH ID available?</p>",
+      "message": "RCH ID available?",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Yes",
+          "val": "Yes",
+          "click": "22"
+        },
+        {
+          "text": "No",
+          "val": "No",
+          "click": "23"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 22,
+      "parentid": 21,
+      "objname": "rchid",
+      "mtype": "inputtextbox",
+      "dmessage": "<p>Please write RCH ID of child</p>",
+      "message": "Please write RCH ID of child",
+      "input": [
+        {
+          "format": "text",
+          "min": 10,
+          "max": 5000,
+          "click": "23"
+        }
+      ],
+      "buttons": [],
+      "cards": [],
+      "conditions": []
+
+    },
+    {
+      "id": 23,
+      "parentid": 21,
+      "objname": "suspectingcovid19",
+      "mtype": "multibutton",
+      "dmessage": "<p>Suspecting COVID 19?</p>",
+      "message": "Suspecting COVID 19?",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Yes",
+          "val": "Yes",
+          "click": "24"
+        },
+        {
+          "text": "No",
+          "val": "No",
+          "click": "45"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 24,
+      "parentid": 23,
+      "objname": "assesschildforcovid19",
+      "mtype": "multibutton",
+      "dmessage": "<p>Sure! let me help you assess the child for COVID 19</p><p>(Click &ldquo;Okay&rdquo; to start assessment)</p>",
+      "message": "Okay!",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Okay",
+          "val": "Okay",
+          "click": "25"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 25,
+      "parentid": 24,
+      "objname": "ageinyear",
+      "mtype": "inputtextbox",
+      "dmessage": "<p>Age of Child (in Years) ?</p><p>(If Child below 1 year, enter 0)</p>",
+      "message": "Age of Child",
+      "input": [
+        {
+          "format": "auto",
+          "min": 0,
+          "max": 4,
+          "click": "27"
+        }
+      ],
+      "buttons": [],
+      "cards": [],
+      "conditions": [
+        {
+          "field": "age",
+          "opp": ">=",
+          "val": "0",
+          "true": "3",
+          "false": "3"
+        }
+      ]
+
+    },
+    {
+      "id": 26,
+      "parentid": 25,
+      "objname": "ageinmonth",
+      "mtype": "inputtextbox",
+      "dmessage": "<p>Age (In completed months)</p><p>(if child below 1 month, enter 0)</p>",
+      "message": "Age of in month",
+      "input": [
+        {
+          "format": "auto",
+          "min": 0,
+          "max": 11,
+          "click": "27"
+        }
+      ],
+      "buttons": [],
+      "cards": [],
+      "conditions": [
+        {
+          "field": "age",
+          "opp": ">=",
+          "val": "0",
+          "true": "3",
+          "false": "3"
+        }
+      ]
+
+    },
+    {
+      "id": 27,
+      "parentid": 25,
+      "objname": "weight",
+      "mtype": "inputtextbox",
+      "dmessage": "<p>Weight of Child (In Kg)</p>",
+      "message": "Weight of Child (In Kg)",
+      "input": [
+        {
+          "format": "auto",
+          "min": 1,
+          "max": 90,
+          "click": "28"
+        }
+      ],
+      "buttons": [],
+      "cards": [],
+      "conditions": [
+        {
+          "field": "age",
+          "opp": ">=",
+          "val": "0",
+          "true": "3",
+          "false": "3"
+        }
+      ]
+
+    },
+    {
+      "id": 28,
+      "parentid": 27,
+      "objname": "presentingwith",
+      "mtype": "cardoption",
+      "dmessage": "<p> <strong>Presenting With:</strong></p><p>(You can select more than one)</p>",
+      "message": "Presenting With",
+      "input": [],
+      "buttons": [],
+      "cards": [
+        {
+          "items": [
+            {
+              "name": "Fever"
+            },
+            {
+              "name": "Common Cold"
+            },
+            {
+              "name": "Cough"
+            },
+            {
+              "name": "Breathing difficulties"
+            },
+            {
+              "name": "Rash"
+            },
+            {
+              "name": "Redness in both eyes"
+            },
+            {
+              "name": "Redness of Hand, Mouth and Face"
+            },
+            {
+              "name": "Diarrhoea"
+            },
+            {
+              "name": "Vomiting"
+            },
+            {
+              "name": "Abdominal Pain"
+            },
+            {
+              "name": "Runny Nose"
+            },
+            {
+              "name": "Loss of test/smell"
+            },
+            {
+              "name": "No symptom"
+            }
+          ],
+          "click": "0"
+        }
+      ],
+      "conditions": [
+        {
+          "field": "symtoms",
+          "opp": "contains",
+          "val": "Fever",
+          "true": "5",
+          "false": "6"
+        }
+      ]
+
+    },
+    {
+      "id": 29,
+      "parentid": 28,
+      "objname": "feversince",
+      "mtype": "inputtextbox",
+      "dmessage": "<p>Fever since how many days?</p>",
+      "message": "Fever since how many days?",
+      "input": [
+        {
+          "format": "auto",
+          "min": 1,
+          "max": 15,
+          "click": "30"
+        }
+      ],
+      "buttons": [],
+      "cards": [],
+      "conditions": [
+        {
+          "field": "age",
+          "opp": ">=",
+          "val": "0",
+          "true": "3",
+          "false": "3"
+        }
+      ]
+
+    },
+    {
+      "id": 30,
+      "parentid": 28,
+      "objname": "temperature",
+      "mtype": "multibutton",
+      "dmessage": "<p>Temperature(In celsius)</p>",
+      "message": "Temperature(In celsius)",
+      "input": [],
+      "buttons": [
+        {
+          "text": "<= 35 &deg;C (95 &deg;F)(Cold to touch)",
+          "val": "35",
+          "click": "31"
+        },
+        {
+          "text": "35.1 - 35.9 &deg;C (95.1 - 96.6 &deg;F)",
+          "val": "36",
+          "click": "31"
+        },
+        {
+          "text": "36 - 36.9 &deg;C (96.7 - 98.4 &deg;F)",
+          "val": "36",
+          "click": "31"
+        },
+        {
+          "text": "37 - 37.9 &deg;C (98.5 - 100.2 &deg;F)",
+          "val": "38",
+          "click": "31"
+        },
+        {
+          "text": "38 - 38.9 &deg;C (100.3 - 102 &deg;F) (Hot to Touch)",
+          "val": "38",
+          "click": "31"
+        },
+        {
+          "text": ">= 39 &deg;C (102.1 &deg;F) (Very hot to touch)",
+          "val": "39",
+          "click": "31"
+        }
+      ],
+      "cards": [],
+      "conditions": [
+        {
+          "field": "symtoms",
+          "opp": "contains",
+          "val": "Fever",
+          "true": "7",
+          "false": "7"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "parentid": 30,
+      "objname": "breathcount",
+      "mtype": "inputtextbox",
+      "dmessage": "<p>Count breaths in 1 min (Respiratory Rate)</p>",
+      "message": "Count breaths in 1 min (Respiratory Rate)",
+      "input": [
+        {
+          "format": "auto",
+          "min": 15,
+          "max": 80,
+          "click": "33"
+        }
+      ],
+      "buttons": [],
+      "cards": [],
+      "conditions": [
+        {
+          "field": "breathcount",
+          "opp": ">=",
+          "val": "10",
+          "true": "8",
+          "false": "8"
+        }
+      ]
+
+    },
+    {
+      "id": 33,
+      "parentid": 32,
+      "objname": "severechestindrawing",
+      "mtype": "multibutton",
+      "dmessage": "<p>Chest wall going inward while breathing(severe Chest indrawing)</p>",
+      "message": "Chest wall going inward while breathing(severe Chest indrawing)",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Yes",
+          "val": "Yes",
+          "click": "34"
+        },
+        {
+          "text": "No",
+          "val": "No",
+          "click": "34"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 34,
+      "parentid": 33,
+      "objname": "noiseduringbreathing",
+      "mtype": "multibutton",
+      "dmessage": "<p>Noise during breathing(Grunting)</p>",
+      "message": "Noise during breathing(Grunting)",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Yes",
+          "val": "Yes",
+          "click": "35"
+        },
+        {
+          "text": "No",
+          "val": "No",
+          "click": "35"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 35,
+      "parentid": 34,
+      "objname": "nasalflaring",
+      "mtype": "multibutton",
+      "dmessage": "<p>Nostrils widen while breathing (Nasal flaring)</p>",
+      "message": "Nostrils widen while breathing (Nasal flaring)",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Yes",
+          "val": "Yes",
+          "click": "36"
+        },
+        {
+          "text": "No",
+          "val": "No",
+          "click": "36"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 36,
+      "parentid": 35,
+      "objname": "covidtest",
+      "mtype": "multibutton",
+      "dmessage": "<p>Tested for Covid 19 RT PCR?</p>",
+      "message": "Tested for Covid 19 RT PCR?",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Yes",
+          "val": "Yes",
+          "click": "37"
+        },
+        {
+          "text": "No",
+          "val": "No",
+          "click": "37"
+        },
+        {
+          "text": "Test not done",
+          "val": "Test no done",
+          "click": "38"
+        },
+        {
+          "text": "Result Awaited",
+          "val": "Result Awaited",
+          "click": "37"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 37,
+      "parentid": 36,
+      "objname": "ICMRtestingID",
+      "mtype": "inputtextbox",
+      "dmessage": "<p>Please enter ICMR testing ID</p>",
+      "message": "Please enter ICMR testing ID",
+      "input": [
+        {
+          "format": "text",
+          "min": 10,
+          "max": 5000,
+          "click": "38"
+        }
+      ],
+      "buttons": [],
+      "cards": [],
+      "conditions": []
+
+    },
+    {
+      "id": 38,
+      "parentid": 36,
+      "objname": "contactwithcovid",
+      "mtype": "multibutton",
+      "dmessage": "<p>Contact with COVID-19 case in last 2 weeks?</p>",
+      "message": "Contact with COVID-19 case in last 2 weeks?",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Yes",
+          "val": "Yes",
+          "click": "40"
+        },
+        {
+          "text": "No",
+          "val": "No",
+          "click": "39"
+        },
+        {
+          "text": "Don't know",
+          "val": "Dont know",
+          "click": "39"
+        }
+      ],
+      "cards": []
+    },
+
+    {
+      "id": 39,
+      "parentid": 38,
+      "objname": "covidantigentest",
+      "mtype": "multibutton",
+      "dmessage": "<p>Please conduct Covid 19 Rapid antigen test and select accordingly</p>",
+      "message": "Please conduct Covid 19 Rapid antigen test and select accordingly",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Positive",
+          "val": "Positive",
+          "click": "40"
+        },
+        {
+          "text": "Negative",
+          "val": "Negative",
+          "click": "40"
+        },
+        {
+          "text": "Not Conducted",
+          "val": "Not Conducted",
+          "click": "40"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 40,
+      "parentid": 38,
+      "objname": "spo2applicable",
+      "mtype": "multibutton",
+      "dmessage": "<p>SPO2 (Oxygen saturation) Measured?</p>",
+      "message": "SPO2 (Oxygen saturation) Measured?",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Yes",
+          "val": "Yes",
+          "click": "41"
+        },
+        {
+          "text": "No",
+          "val": "No",
+          "click": "42"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 41,
+      "parentid": 40,
+      "objname": "spo2rate",
+      "mtype": "inputtextbox",
+      "dmessage": "<p>SPO2</p>",
+      "message": "SPO2",
+      "input": [
+        {
+          "format": "auto",
+          "min": 50,
+          "max": 100,
+          "click": "42"
+        }
+      ],
+      "buttons": [],
+      "cards": [],
+      "conditions": []
+
+    },
+    {
+      "id": 42,
+      "parentid": 40,
+      "objname": "lookforassociated",
+      "mtype": "cardoption",
+      "dmessage": "<p>Look for associated Danger sign/s:</p><p>(You can choose more than one.)</p><p>(If Child does not have any Danger sign, select 'None')</p>",
+      "message": "Look for associated Danger sign/s:",
+      "input": [],
+      "buttons": [],
+      "cards": [
+        {
+          "items": [
+            {
+              "name": "Lethargic or Unconscious"
+            },
+            {
+              "name": "Convulsion or History of convulsion"
+            },
+            {
+              "name": "Movement less than normal"
+            },
+            {
+              "name": "Cold Extremities"
+            },
+            {
+              "name": "Unable to drink/feed"
+            },
+            {
+              "name": "Vomits everything"
+            },
+            {
+              "name": "Sunken Eyes"
+            },
+            {
+              "name": "Dry mouth"
+            },
+            {
+              "name": "Skin pinch goes back slowly (<= 2 sec)"
+            },
+            {
+              "name": "Skin pinch goes back very slowly (> 2 sec)"
+            },
+            {
+              "name": "Blue discoloration"
+            },
+            {
+              "name": "None"
+            }
+          ],
+          "click": "43"
+        }
+      ],
+      "conditions": []
+    },
+    {
+      "id": 43,
+      "parentid": 42,
+      "objname": "historycondition",
+      "mtype": "cardoption",
+      "dmessage": "<p> History of any of the following llness ?</p>",
+      "message": "History of any of the following llness ?",
+      "input": [],
+      "buttons": [],
+      "cards": [
+        {
+          "items": [
+            {
+              "name": "Lung Disease"
+            },
+            {
+              "name": "Kidney Disease"
+            },
+            {
+              "name": "Liver Disease"
+            },
+            {
+              "name": "Malignancy"
+            },
+            {
+              "name": "Genetic Syndrome"
+            },
+            {
+              "name": "None"
+            }
+          ],
+          "click": "300"
+        }
+      ],
+      "conditions": []
+    },
+    {
+      "id": 45,
+      "parentid": 23,
+      "objname": "assesschildforimnci",
+      "mtype": "multibutton",
+      "dmessage": "<p>Okay, I will help you to assess severity of child illness and initial management.</p>",
+      "message": "Lets start assessment",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Lets start assessment",
+          "val": "Lets start assessment",
+          "click": "46"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 46,
+      "parentid": 45,
+      "objname": "younginfant",
+      "mtype": "multibutton",
+      "dmessage": "<p>Child is very young infant ? (age less than 2 months)</p>",
+      "message": "Child is very young infant ? (age less than 2 months)",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Yes",
+          "val": "Yes",
+          "click": "49"
+        },
+        {
+          "text": "No",
+          "val": "No",
+          "click": "47"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 47,
+      "parentid": 45,
+      "objname": "ageinyear",
+      "mtype": "inputtextbox",
+      "dmessage": "<p>Age of child in completed Years?</p><p>(If the Child less 1 year, enter 0)</p>",
+      "message": "Age of Child in year",
+      "input": [
+        {
+          "format": "auto",
+          "min": 0,
+          "max": 4,
+          "click": "48"
+        }
+      ],
+      "buttons": [],
+      "cards": [],
+      "conditions": [
+        {
+          "field": "age",
+          "opp": ">=",
+          "val": "0",
+          "true": "3",
+          "false": "3"
+        }
+      ]
+
+    },
+    {
+      "id": 48,
+      "parentid": 47,
+      "objname": "ageinmonth",
+      "mtype": "inputtextbox",
+      "dmessage": "<p>Age of child in completed Months</p>",
+      "message": "Age of in month",
+      "input": [
+        {
+          "format": "auto",
+          "min": 2,
+          "max": 11,
+          "click": "27"
+        }
+      ],
+      "buttons": [],
+      "cards": [],
+      "conditions": [
+        {
+          "field": "age",
+          "opp": ">=",
+          "val": "0",
+          "true": "3",
+          "false": "3"
+        }
+      ]
+
+    },
+    {
+      "id": 49,
+      "parentid": 46,
+      "objname": "ageinweek",
+      "mtype": "inputtextbox",
+      "dmessage": "<p>Age of child in completed weeks?</p>",
+      "message": "Age of child in completed weeks?",
+      "input": [
+        {
+          "format": "auto",
+          "min": 0,
+          "max": 7,
+          "click": "5"
+        }
+      ],
+      "buttons": [],
+      "cards": [],
+      "conditions": [
+        {
+          "field": "age",
+          "opp": ">=",
+          "val": "0",
+          "true": "3",
+          "false": "3"
+        }
+      ]
+
+    },
+    {
+      "id": 50,
+      "parentid": 46,
+      "objname": "gender",
+      "mtype": "multibutton",
+      "dmessage": "<p>Child is?</p>",
+      "message": "Child is?",
+      "input": [],
+      "buttons": [
+        {
+          "text": "Girl",
+          "val": "Girl",
+          "click": "51"
+        },
+        {
+          "text": "Boy",
+          "val": "Boy",
+          "click": "51"
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": 51,
+      "parentid": 50,
+      "objname": "weight",
+      "mtype": "inputtextbox",
+      "dmessage": "<p>Weight of Child (In Kg)</p>",
+      "message": "Weight of Child (In Kg)",
+      "input": [
+        {
+          "format": "auto",
+          "min": 0,
+          "max": 12,
+          "click": "52"
+        }
+      ],
+      "buttons": [],
+      "cards": [],
+      "conditions": [
+        {
+          "field": "age",
+          "opp": ">=",
+          "val": "0",
+          "true": "3",
+          "false": "3"
+        }
+      ]
+
+    },
+    {
+      "id": 52,
+      "parentid": 51,
+      "objname": "infantsproblems",
+      "mtype": "cardoption",
+      "dmessage": "<p>What are the infant's problems?</p>",
+      "message": "What are the infant's problems?",
+      "input": [],
+      "buttons": [],
+      "cards": [
+        {
+          "items": [
+            {
+              "name": "Jaundice"
+            },
+            {
+              "name": "Diarrhoea"
+            },
+            {
+              "name": "None"
+            }
+          ],
+          "click": "0"
+        }
+      ],
+      "conditions": []
+    },
+    {
+      "id": 53,
+      "parentid": 52,
+      "objname": "Jaundicefirstappear",
+      "mtype": "multibutton",
+      "dmessage": "<p>When did Jaundice first appear?</p>",
+      "message": "When did Jaundice first appear?",
+      "input": [],
+      "buttons": [
+        {
+          "text": "In first 24 hr of birth",
+          "val": "24",
+          "click": "51"
+        },
+        {
+          "text": "After 1 day of birth ",
+          "val": "1 ",
+          "click": "51"
         }
       ],
       "cards": []
