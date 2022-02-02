@@ -37,8 +37,8 @@ namespace ChatBot
             services.Configure<MongoDbSettings>(Configuration.GetSection("MongoDbSettings"));
 
             services.AddSingleton<IMongoDbSettings>(serviceProvider =>
-                serviceProvider.GetRequiredService<IOptions<MongoDbSettings>>().Value);
-
+            serviceProvider.GetRequiredService<IOptions<MongoDbSettings>>().Value);
+            services.AddSession();
             services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
             services.AddControllersWithViews().AddSessionStateTempDataProvider()
       .AddNewtonsoftJson(options =>
@@ -60,11 +60,9 @@ namespace ChatBot
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

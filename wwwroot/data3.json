@@ -1010,12 +1010,12 @@
         {
           "text": "Yes",
           "val": "Yes",
-          "click": "36"
+          "click": "40"
         },
         {
           "text": "No",
           "val": "No",
-          "click": "36"
+          "click": "40"
         }
       ],
       "cards": []
@@ -1112,17 +1112,17 @@
         {
           "text": "Positive",
           "val": "Positive",
-          "click": "40"
+          "click": "42"
         },
         {
           "text": "Negative",
           "val": "Negative",
-          "click": "40"
+          "click": "42"
         },
         {
           "text": "Not Conducted",
           "val": "Not Conducted",
-          "click": "40"
+          "click": "42"
         }
       ],
       "cards": []
@@ -1144,7 +1144,7 @@
         {
           "text": "No",
           "val": "No",
-          "click": "42"
+          "click": "36"
         }
       ],
       "cards": []
@@ -1161,7 +1161,7 @@
           "format": "auto",
           "min": 50,
           "max": 100,
-          "click": "42"
+          "click": "36"
         }
       ],
       "buttons": [],
@@ -1665,6 +1665,11 @@
         {
           "text": "No",
           "val": "No",
+          "click": "400"
+        },
+        {
+          "text": "Not verified",
+          "val": "Not verified",
           "click": "400"
         }
       ],

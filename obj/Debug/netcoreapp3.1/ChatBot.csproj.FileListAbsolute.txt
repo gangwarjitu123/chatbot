@@ -737,4 +737,3 @@ D:\GitCHATBOT-Landboat\chatbot\obj\Debug\netcoreapp3.1\ChatBot.dll
 D:\GitCHATBOT-Landboat\chatbot\obj\Debug\netcoreapp3.1\ChatBot.pdb
 D:\GitCHATBOT-Landboat\chatbot\obj\Debug\netcoreapp3.1\ChatBot.genruntimeconfig.cache
 D:\GitCHATBOT-Landboat\chatbot\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index - withdata1.cshtml.g.cs
-D:\GitCHATBOT-Landboat\chatbot\obj\Debug\netcoreapp3.1\ChatBot.csprojAssemblyReference.cache

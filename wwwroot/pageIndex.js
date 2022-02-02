@@ -353,28 +353,28 @@ function AskmultibuttonQuestion(objthis) {
             ageinyear = setval
             break;
         case 'ageinmonth':
-            ageinmonth = qtext
+            ageinmonth = setval
             break;
         case 'heightincm':
-            heightincm = qtext
+            heightincm = setval
             break;
         case 'dehydration_graterthan2':
-            dehydration_graterthan2 = qtext
+            dehydration_graterthan2 = setval
             break;
         case 'bloodinstool':
-            bloodinstool = qtext
+            bloodinstool = setval
             break;
         case 'diarrhoeadays':
-            diarrhoeadays = qtext
+            diarrhoeadays = setval
             break;
         case 'symptoms_lessthan2':
-            symptoms_lessthan2 = qtext
+            symptoms_lessthan2 = setval
             break;
         case 'symptoms_greterthan2':
-            symptoms_greterthan2 = qtext
+            symptoms_greterthan2 = setval
             break;
         case 'gds':
-            gds = qtext
+            gds = setval
             break;
         case 'weight':
             weight = setval
@@ -510,7 +510,7 @@ function AskmultibuttonQuestion(objthis) {
     }
     $(objthis).parent().hide();
     $(objthis).parent().parent().find('.inputsend').slideUp('fast');
-    AddLog(qtext, currentQuestion.message, dataobj, qtext);
+    AddLog(qtext, currentQuestion.message, dataobj, setval);
 }
 function AskNextQuestionInput(objthis) {
     var cQid = $(objthis).attr('data-var');
@@ -831,10 +831,22 @@ function AskNextQuestionCardOption(objthis) {
         summaryfunMorethen5();
     }
     else if (cQid == 300) {
-        //summaryfunMorethen5();
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: '/Home/GetSummary',
+            datatype: 'json',
+            data: { id: 300 },
+            success: function (reponse) {
+
+                printSummaryForLessThe5(reponse);
+            },
+            error: function (result) {
+            }
+        });
     }
     else if (cQid == 400) {
-        // summaryfunMorethen5();
+
     }
     else {
         var data = GetQuestionById(JData, nextQuestionId);
@@ -906,9 +918,10 @@ function summaryfunMorethen5() {
         }
     }
 
-    printSummary(casetype);
+    printSummarymorethn5(casetype);
 
 }
+
 
 function LoadWellcomeMessage() {
     var data = GetQuestionById(JData, 1);
@@ -1009,7 +1022,7 @@ function PrintChat(txtMsg) {
     }, 1000)
 }
 
-function printSummary(type) {
+function printSummarymorethn5(type) {
     if (type == "mild") {
         var htmtxt = '';
         var htmtxt2 = '';
@@ -1021,7 +1034,7 @@ function printSummary(type) {
         htmtxt += '• Adequate hydration and continue feeding<br />';
         htmtxt += '• Thrice a day monitoring: SpO2, Respiratory Rate(Breaths count in 1 min), Temperature</p>';
         PrintChat(htmtxt);
-        if (covidtest == "Test not done" && covidantigentest == 'Not Conducted') {
+        if (covidtest == "Test not done" || covidantigentest == 'Not Conducted') {
             var ddddd = '<p>"Advice for COVID 19 testing "</p>';
             PrintChat(ddddd);
         }
@@ -1071,7 +1084,7 @@ function printSummary(type) {
         htmtxt += '"Refer Immediately to Paediatric DCH/HDU/ICU"<br />';
         htmtxt += '"Make arrangements for referral in a well-equipped ambulance (with oxygen support and trained paramedic) and inform the receiving facility to secure a bed"<br />';
         PrintChat(htmtxt);
-        if (covidtest == "Test not done" && covidantigentest == 'Not Conducted') {
+        if (covidtest == "Test not done" || covidantigentest == 'Not Conducted') {
             var ddddd = '<p>"Advice for COVID 19 testing "</p>';
             PrintChat(ddddd);
         }
@@ -1125,9 +1138,368 @@ function printSummary(type) {
         LoadQuestion(data);
     }
 }
+function printSummaryForLessThe5(type) {
+    if (type == "normal") {
+        var htmtxt = '';
+        var htmtxt2 = '';
+        var htmtxt3 = '';
+
+        htmtxt += '<p>Home isolation(if not possible - refer to Covid Care Centre)<br />';
+        htmtxt += '• Daily teleconsultation with CCC<br />';
+        htmtxt += '• Supportive care & rest<br />';
+        htmtxt += '• Adequate hydration and continue feeding<br />';
+        htmtxt += '• Thrice a day monitoring: SpO2, Respiratory Rate(Breaths count in 1 min), Temperature</p>';
+        PrintChat(htmtxt);
+        if (covidtest == "Test not done" || covidantigentest == 'Not Conducted') {
+            var ddddd = '<p>"Advice for COVID 19 testing "</p>';
+            PrintChat(ddddd);
+        }
+        if (weight < 4) {
+
+            if (age == 0 && ageinmonth < 2) {
+                htmtxt2 += '<p>Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />';
+                htmtxt2 += '- SpO 2 < 94<br />';
+                htmtxt2 += '- Breaths count in 1 min: more than 59<br />';
+                htmtxt2 += '- Difficulty in Breathing<br />';
+                htmtxt2 += '- Unremitting fever for 5 days/Temperature > 37.5 C<br />';
+                htmtxt2 += '- Temperature <35.5 C<br />';
+                htmtxt2 += '- Unable to drink/breastfeed<br />';
+                htmtxt2 += '- Child become sick<br />';
+                htmtxt2 += '- Blood in stool</p>';
+            } else if (age == 0 && ageinmonth > 1 && ageinmonth < 12) {
+                htmtxt2 += '<p>Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />';
+                htmtxt2 += '- SpO 2 < 94<br />';
+                htmtxt2 += '- Breaths count in 1 min: more than 49<br />';
+                htmtxt2 += '- Difficulty in Breathing<br />';
+                htmtxt2 += '- Unremitting fever for 5 days/Temperature > 37.5 C<br />';
+                htmtxt2 += '- Temperature <35.5 C<br />';
+                htmtxt2 += '- Unable to drink/breastfeed<br />';
+                htmtxt2 += '- Child become sick<br />';
+                htmtxt2 += '- Blood in stool</p>';
+            }
+            else if (age > 0 && age < 6) {
+                htmtxt2 += '<p>Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />';
+                htmtxt2 += '- SpO 2 < 94<br />';
+                htmtxt2 += '- Breaths count in 1 min: more than 39<br />';
+                htmtxt2 += '- Difficulty in Breathing<br />';
+                htmtxt2 += '- Unremitting fever for 5 days/Temperature > 37.5 C<br />';
+                htmtxt2 += '- Temperature <35.5 C<br />';
+                htmtxt2 += '- Unable to drink/breastfeed<br />';
+                htmtxt2 += '- Child become sick<br />';
+                htmtxt2 += '- Blood in stool</p>';
+            }
+            else {
+                htmtxt2 += '<p>Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />';
+                htmtxt2 += '- SpO 2 < 94<br />';
+                htmtxt2 += '- Breaths count in 1 min: more than 29<br />';
+                htmtxt2 += '- Difficulty in Breathing<br />';
+                htmtxt2 += '- Unremitting fever for 5 days/Temperature > 37.5 C<br />';
+                htmtxt2 += '- Temperature <35.5 C<br />';
+                htmtxt2 += '- Unable to drink/breastfeed<br />';
+                htmtxt2 += '- Child become sick<br />';
+                htmtxt2 += '- Blood in stool</p>';
+            }
+        }
+        else if (weight >= 4 && weight < 10) {
+            var Dosetxt = '<p>PCM 100 mg dose can be given for fever</p>';
+            PrintChat(Dosetxt);
+
+            if (age == 0 && ageinmonth < 2) {
+                htmtxt2 += '<p>Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />';
+                htmtxt2 += '- SpO 2 < 94<br />';
+                htmtxt2 += '- Breaths count in 1 min: more than 59<br />';
+                htmtxt2 += '- Difficulty in Breathing<br />';
+                htmtxt2 += '- Unremitting fever for 5 days/Temperature > 37.5 C<br />';
+                htmtxt2 += '- Temperature <35.5 C<br />';
+                htmtxt2 += '- Unable to drink/breastfeed<br />';
+                htmtxt2 += '- Child become sick<br />';
+                htmtxt2 += '- Blood in stool</p>';
+            } else if (age == 0 && ageinmonth > 1 && ageinmonth < 12) {
+                htmtxt2 += '<p>Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />';
+                htmtxt2 += '- SpO 2 < 94<br />';
+                htmtxt2 += '- Breaths count in 1 min: more than 49<br />';
+                htmtxt2 += '- Difficulty in Breathing<br />';
+                htmtxt2 += '- Unremitting fever for 5 days/Temperature > 37.5 C<br />';
+                htmtxt2 += '- Temperature <35.5 C<br />';
+                htmtxt2 += '- Unable to drink/breastfeed<br />';
+                htmtxt2 += '- Child become sick<br />';
+                htmtxt2 += '- Blood in stool</p>';
+            }
+            else if (age > 0 && age < 6) {
+                htmtxt2 += '<p>Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />';
+                htmtxt2 += '- SpO 2 < 94<br />';
+                htmtxt2 += '- Breaths count in 1 min: more than 39<br />';
+                htmtxt2 += '- Difficulty in Breathing<br />';
+                htmtxt2 += '- Unremitting fever for 5 days/Temperature > 37.5 C<br />';
+                htmtxt2 += '- Temperature <35.5 C<br />';
+                htmtxt2 += '- Unable to drink/breastfeed<br />';
+                htmtxt2 += '- Child become sick<br />';
+                htmtxt2 += '- Blood in stool</p>';
+            }
+            else {
+                htmtxt2 += '<p>Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />';
+                htmtxt2 += '- SpO 2 < 94<br />';
+                htmtxt2 += '- Breaths count in 1 min: more than 29<br />';
+                htmtxt2 += '- Difficulty in Breathing<br />';
+                htmtxt2 += '- Unremitting fever for 5 days/Temperature > 37.5 C<br />';
+                htmtxt2 += '- Temperature <35.5 C<br />';
+                htmtxt2 += '- Unable to drink/breastfeed<br />';
+                htmtxt2 += '- Child become sick<br />';
+                htmtxt2 += '- Blood in stool</p>';
+            }
+        }
+        else if (weight >= 10 && weight < 15) {
+            var Dosetxt = '<p>PCM 150 mg dose can be given for fever</p>';
+            PrintChat(Dosetxt);
+            if (age == 0 && ageinmonth < 2) {
+                htmtxt2 += '<p>Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />';
+                htmtxt2 += '- SpO 2 < 94<br />';
+                htmtxt2 += '- Breaths count in 1 min: more than 59<br />';
+                htmtxt2 += '- Difficulty in Breathing<br />';
+                htmtxt2 += '- Unremitting fever for 5 days/Temperature > 37.5 C<br />';
+                htmtxt2 += '- Temperature <35.5 C<br />';
+                htmtxt2 += '- Unable to drink/breastfeed<br />';
+                htmtxt2 += '- Child become sick<br />';
+                htmtxt2 += '- Blood in stool</p>';
+            } else if (age == 0 && ageinmonth > 1 && ageinmonth < 12) {
+                htmtxt2 += '<p>Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />';
+                htmtxt2 += '- SpO 2 < 94<br />';
+                htmtxt2 += '- Breaths count in 1 min: more than 49<br />';
+                htmtxt2 += '- Difficulty in Breathing<br />';
+                htmtxt2 += '- Unremitting fever for 5 days/Temperature > 37.5 C<br />';
+                htmtxt2 += '- Temperature <35.5 C<br />';
+                htmtxt2 += '- Unable to drink/breastfeed<br />';
+                htmtxt2 += '- Child become sick<br />';
+                htmtxt2 += '- Blood in stool</p>';
+            }
+            else if (age > 0 && age < 6) {
+                htmtxt2 += '<p>Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />';
+                htmtxt2 += '- SpO 2 < 94<br />';
+                htmtxt2 += '- Breaths count in 1 min: more than 39<br />';
+                htmtxt2 += '- Difficulty in Breathing<br />';
+                htmtxt2 += '- Unremitting fever for 5 days/Temperature > 37.5 C<br />';
+                htmtxt2 += '- Temperature <35.5 C<br />';
+                htmtxt2 += '- Unable to drink/breastfeed<br />';
+                htmtxt2 += '- Child become sick<br />';
+                htmtxt2 += '- Blood in stool</p>';
+            }
+            else {
+                htmtxt2 += '<p>Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />';
+                htmtxt2 += '- SpO 2 < 94<br />';
+                htmtxt2 += '- Breaths count in 1 min: more than 29<br />';
+                htmtxt2 += '- Difficulty in Breathing<br />';
+                htmtxt2 += '- Unremitting fever for 5 days/Temperature > 37.5 C<br />';
+                htmtxt2 += '- Temperature <35.5 C<br />';
+                htmtxt2 += '- Unable to drink/breastfeed<br />';
+                htmtxt2 += '- Child become sick<br />';
+                htmtxt2 += '- Blood in stool</p>';
+            }
+        } else if (weight >= 15 && weight < 20) {
+            var Dosetxt = '<p>PCM 250 mg dose can be given for fever</p>';
+            PrintChat(Dosetxt);
+        }
+        else if (weight > 20) {
+            var Dosetxt = '<p>PCM 500 mg dose can be given for fever</p>';
+            PrintChat(Dosetxt);
+            if (age == 0 && ageinmonth < 2) {
+                htmtxt2 += '<p>Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />';
+                htmtxt2 += '- SpO 2 < 94<br />';
+                htmtxt2 += '- Breaths count in 1 min: more than 59<br />';
+                htmtxt2 += '- Difficulty in Breathing<br />';
+                htmtxt2 += '- Unremitting fever for 5 days/Temperature > 37.5 C<br />';
+                htmtxt2 += '- Temperature <35.5 C<br />';
+                htmtxt2 += '- Unable to drink/breastfeed<br />';
+                htmtxt2 += '- Child become sick<br />';
+                htmtxt2 += '- Blood in stool</p>';
+            } else if (age == 0 && ageinmonth > 1 && ageinmonth < 12) {
+                htmtxt2 += '<p>Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />';
+                htmtxt2 += '- SpO 2 < 94<br />';
+                htmtxt2 += '- Breaths count in 1 min: more than 49<br />';
+                htmtxt2 += '- Difficulty in Breathing<br />';
+                htmtxt2 += '- Unremitting fever for 5 days/Temperature > 37.5 C<br />';
+                htmtxt2 += '- Temperature <35.5 C<br />';
+                htmtxt2 += '- Unable to drink/breastfeed<br />';
+                htmtxt2 += '- Child become sick<br />';
+                htmtxt2 += '- Blood in stool</p>';
+            }
+            else if (age > 0 && age < 6) {
+                htmtxt2 += '<p>Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />';
+                htmtxt2 += '- SpO 2 < 94<br />';
+                htmtxt2 += '- Breaths count in 1 min: more than 39<br />';
+                htmtxt2 += '- Difficulty in Breathing<br />';
+                htmtxt2 += '- Unremitting fever for 5 days/Temperature > 37.5 C<br />';
+                htmtxt2 += '- Temperature <35.5 C<br />';
+                htmtxt2 += '- Unable to drink/breastfeed<br />';
+                htmtxt2 += '- Child become sick<br />';
+                htmtxt2 += '- Blood in stool</p>';
+            }
+            else {
+                htmtxt2 += '<p>Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />';
+                htmtxt2 += '- SpO 2 < 94<br />';
+                htmtxt2 += '- Breaths count in 1 min: more than 29<br />';
+                htmtxt2 += '- Difficulty in Breathing<br />';
+                htmtxt2 += '- Unremitting fever for 5 days/Temperature > 37.5 C<br />';
+                htmtxt2 += '- Temperature <35.5 C<br />';
+                htmtxt2 += '- Unable to drink/breastfeed<br />';
+                htmtxt2 += '- Child become sick<br />';
+                htmtxt2 += '- Blood in stool</p>';
+            }
+        }
+
+        if (ageinyear == 0 && ageinmonth < 6) {
+            htmtxt3 += '<p>Home care for cough:<br />';
+            htmtxt3 += '- Continue exclusive breast feeding<br />';
+            htmtxt3 += '- Stuffy nose could be cleaned with saline nasal drops (by ading 2.5 gm salt in 1 glass of clean drinking water)</p><br />';
+
+        }
+        else {
+            htmtxt3 += '<p>Home care for cough:<br />';
+            htmtxt3 += '- Home made herbal concoction of honey, tulsi, ginger, etc<br />';
+            htmtxt3 += '- Stuffy nose could be cleaned with saline nasal drops (by ading 2.5 gm salt in 1 glass of clean drinking water)</p><br />';
+        }
+        PrintChat(htmtxt2);
+        PrintChat(htmtxt3);
+    }
+    else if (type == "severe") {
+        var htmtxt = '';
+        var htmtxt2 = '';
+        var htmtxt3 = '';
+
+        htmtxt += '"Give age appropriate dose of Paracetamol for fever >100F"<br />';
+        htmtxt += '"Give pre-referral dose of Oral Amoxicillin"<br />';
+        htmtxt += '"Refer Immediately to Paediatric DCH/HDU/ICU"<br />';
+        htmtxt += '"Make arrangements for referral in a well-equipped ambulance (with oxygen support and trained paramedic) and inform the receiving facility to secure a bed"<br />';
+        PrintChat(htmtxt);
+        if (covidtest == "Test not done" || covidantigentest == 'Not Conducted') {
+            var ddddd = '<p>"Advice for COVID 19 testing "</p>';
+            PrintChat(ddddd);
+        }
+        if (weight < 2) {
+            var Dosetxt = '<p>Tab/Syp Amoxicillin : 50 mg</p>';
+            PrintChat(Dosetxt);
+
+        }
+        else if (weight >= 2 && weight <= 3) {
+            var Dosetxt = '<p>Tab/Syp Amoxicillin : 62 mg</p>';
+            PrintChat(Dosetxt);
+
+        } else if (weight > 3 && weight <= 4) {
+            var Dosetxt = '<p>Tab/Syp Amoxicillin : 87 mg</p>';
+            PrintChat(Dosetxt);
+
+        }
+        else if (weight > 4 && weight <= 6) {
+            var Dosetxt = '<p>Tab/Syp Amoxicillin : 125 mg</p><p>Tab/Syp Paracetamol : 100 mg</p>';
+            PrintChat(Dosetxt);
+
+        }
+        else if (weight > 6 && weight <= 10) {
+            var Dosetxt = '<p>Tab/Syp Amoxicillin : 250 mg</p><p>Tab/Syp Paracetamol : 100 mg</p>';
+            PrintChat(Dosetxt);
+
+        }
+        else if (weight > 10 && weight <= 14) {
+            var Dosetxt = '<p>Tab/Syp Amoxicillin : 375 mg</p><p>Tab/Syp Paracetamol : 150 mg</p>';
+            PrintChat(Dosetxt);
+
+        }
+        else if (weight > 14 && weight <= 20) {
+            var Dosetxt = '<p>Tab/Syp Amoxicillin : 500 mg</p><p>Tab/Syp Paracetamol : 250 mg</p>';
+            PrintChat(Dosetxt);
+
+        }
+        else if (weight > 20) {
+            var Dosetxt = '<p>Tab/Syp Amoxicillin : 500 mg</p><p>Tab/Syp Paracetamol : 500 mg</p>';
+            PrintChat(Dosetxt);
+
+        }
+    }
+    else if (type == "mild") {
+        var htmtxt = '';
+        var htmtxt2 = '';
+        var htmtxt3 = '';
+
+        htmtxt += '"Give age appropriate dose of Paracetamol for fever >100F"<br />';
+        htmtxt += '"Give pre-referral dose of Oral Amoxicillin"<br />';
+        htmtxt += '"Refer Immediately to Paediatric DCHC/SDH/CH/CHC"<br />';
+        htmtxt += '"Make arrangements for referral in a well-equipped ambulance and inform the receiving facility to secure a bed"<br />';
+        PrintChat(htmtxt);
+        if (covidtest == "Test not done" || covidantigentest == 'Not Conducted') {
+            var ddddd = '<p>"Advice for COVID 19 testing "</p>';
+            PrintChat(ddddd);
+        }
+        if (weight < 2) {
+            var Dosetxt = '<p>Tab/Syp Amoxicillin : 50 mg</p>';
+            PrintChat(Dosetxt);
+
+        }
+        if (weight < 2) {
+            var Dosetxt = '<p>Tab/Syp Amoxicillin : 50 mg</p>';
+            PrintChat(Dosetxt);
+
+        }
+        else if (weight >= 2 && weight <= 3) {
+            var Dosetxt = '<p>Tab/Syp Amoxicillin : 62 mg</p>';
+            PrintChat(Dosetxt);
+
+        } else if (weight > 3 && weight <= 4) {
+            var Dosetxt = '<p>Tab/Syp Amoxicillin : 87 mg</p>';
+            PrintChat(Dosetxt);
+
+        }
+        else if (weight > 4 && weight <= 6) {
+            var Dosetxt = '<p>Tab/Syp Amoxicillin : 125 mg</p><p>Tab/Syp Paracetamol : 100 mg</p>';
+            PrintChat(Dosetxt);
+
+        }
+        else if (weight > 6 && weight <= 10) {
+            var Dosetxt = '<p>Tab/Syp Amoxicillin : 250 mg</p><p>Tab/Syp Paracetamol : 100 mg</p>';
+            PrintChat(Dosetxt);
+
+        }
+        else if (weight > 10 && weight <= 14) {
+            var Dosetxt = '<p>Tab/Syp Amoxicillin : 375 mg</p><p>Tab/Syp Paracetamol : 150 mg</p>';
+            PrintChat(Dosetxt);
+
+        }
+        else if (weight > 14 && weight <= 20) {
+            var Dosetxt = '<p>Tab/Syp Amoxicillin : 500 mg</p><p>Tab/Syp Paracetamol : 250 mg</p>';
+            PrintChat(Dosetxt);
+
+        }
+        else if (weight > 20) {
+            var Dosetxt = '<p>Tab/Syp Amoxicillin : 500 mg</p><p>Tab/Syp Paracetamol : 500 mg</p>';
+            PrintChat(Dosetxt);
+
+        }
+    }
+    else if (type == "normal mild") {
+        var htmtxt = '';
+        var htmtxt2 = '';
+        var htmtxt3 = '';
+
+        htmtxt += '"Refer immediately to hospital/CCC"<br />';
+        htmtxt += '"Advice to continue breastfeeding (if able to take orally)"<br />';
+        htmtxt += '"In young infant- keep the baby warm on way to hospital"<br />';
+        PrintChat(htmtxt);
+        if (covidtest == "Test not done" || covidantigentest == 'Not Conducted') {
+            var ddddd = '<p>"Advice for COVID 19 testing "</p>';
+            PrintChat(ddddd);
+        }
+    }
+    restvaiable();
+    var data = GetQuestionById(JData, 2001);
+
+    if (data.cards.length > 0) {
+        LoadCardOptionQuestion(data);
+    }
+    else {
+        LoadQuestion(data);
+    }
+}
 
 function setsendbutton(objthis) {
-    var idddd = $(objthis).parent().find('div.selected').length+1;
+    var idddd = $(objthis).parent().find('div.selected').length + 1;
     if (idddd > 0) {
         $(objthis).parent().parent().find('.cardtype').show();
     }
@@ -1158,34 +1530,45 @@ function AddLog(Answer, Question, DataVariableName, DataVariableValue) {
     });
 }
 function restvaiable() {
-    txtpreviousid = 0;
-    substr = [];
-    ageinyear = 0;
-    heightincm = 0;
-    dehydration_graterthan2 = '';
-    bloodinstool = '';
-    diarrhoeadays = 0;
-    symptoms_lessthan2 = '';
-    symptoms_greterthan2 = '';
-    gds = '';
-    weight = 0.1;
-    ageinmonth = 0;
-    symtoms = '';
-    covidtest = '';
-    contactwithcovid = '';
-    feversince = 0;
-    breathcount = 0;
-    nasalflaring = '';
-    presentingwith = '';
-    pulserateapplicable = '';
-    pulserate = 0;
-    crt = 0;
-    noiseduringbreathing = '';
-    severechestindrawing = '';
-    temperature = '';
-    spo2applicable = '';
-    spo2rate = 0;
-    covidantigentest = '';
-    lookforassociated = '';
-    historycondition = ''
+    $.ajax({
+        type: "POST",
+        async: false,
+        url: '/Home/ResetVariable',
+        datatype: 'json',
+        data: { id: 300 },
+        success: function (reponse) {
+            txtpreviousid = 0;
+            substr = [];
+            ageinyear = 0;
+            heightincm = 0;
+            dehydration_graterthan2 = '';
+            bloodinstool = '';
+            diarrhoeadays = 0;
+            symptoms_lessthan2 = '';
+            symptoms_greterthan2 = '';
+            gds = '';
+            weight = 0.1;
+            ageinmonth = 0;
+            symtoms = '';
+            covidtest = '';
+            contactwithcovid = '';
+            feversince = 0;
+            breathcount = 0;
+            nasalflaring = '';
+            presentingwith = '';
+            pulserateapplicable = '';
+            pulserate = 0;
+            crt = 0;
+            noiseduringbreathing = '';
+            severechestindrawing = '';
+            temperature = '';
+            spo2applicable = '';
+            spo2rate = 0;
+            covidantigentest = '';
+            lookforassociated = '';
+            historycondition = '';
+        },
+        error: function (result) {
+        }
+    });
 }
