@@ -506,9 +506,7 @@ function AskmultibuttonQuestion(objthis) {
             datatype: 'json',
             data: { id: cQid },
             success: function (reponse) {
-                alert(reponse);
                 var Items = reponse.Item;
-                alert(JSON.stringify(Items));
                 for (var i = 0; i < Items.length; i++) {
                     PrintChat(Items[i].item);
                 }
@@ -884,7 +882,6 @@ function AskNextQuestionCardOption(objthis) {
             data: { id: cQid },
             success: function (reponse) {
                 var Items = reponse.Item;
-                alert(JSON.stringify(Items));
                 for (var i = 0; i < Items.length; i++) {
                     PrintChat(Items[i].item);
                 }
