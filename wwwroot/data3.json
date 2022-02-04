@@ -1414,12 +1414,12 @@
       "buttons": [
         {
           "text": "In first 24 hr of birth",
-          "val": "24",
+          "val": "In first 24 hr of birth",
           "click": "52"
         },
         {
           "text": "After 1 day of birth",
-          "val": "1",
+          "val": "After 1 day of birth",
           "click": "52"
         }
       ],
@@ -1990,7 +1990,7 @@
         {
           "text": "Yes",
           "val": "Yes",
-          "click": "80"
+          "click": "82"
         },
         {
           "text": "No",

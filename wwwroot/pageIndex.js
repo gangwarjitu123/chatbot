@@ -498,19 +498,49 @@ function AskmultibuttonQuestion(objthis) {
             cQid = 500;
         }
     }
+    if (cQid == 400 || cQid == 500) {
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: '/Home/GetSummary',
+            datatype: 'json',
+            data: { id: cQid },
+            success: function (reponse) {
+                alert(reponse);
+                var Items = reponse.Item;
+                alert(JSON.stringify(Items));
+                for (var i = 0; i < Items.length; i++) {
+                    PrintChat(Items[i].item);
+                }
+                restvaiable();
+                var data = GetQuestionById(JData, 2001);
 
-    var data = GetQuestionById(JData, cQid);
-    LoadUserSentMessage(qtext);
-    if (data.cards.length > 0) {
-        LoadCardOptionQuestion(data);
-
+                if (data.cards.length > 0) {
+                    LoadCardOptionQuestion(data);
+                }
+                else {
+                    LoadQuestion(data);
+                }
+            },
+            error: function (result) {
+            }
+        });
     }
     else {
-        LoadQuestion(data);
+
+        var data = GetQuestionById(JData, cQid);
+        LoadUserSentMessage(qtext);
+        if (data.cards.length > 0) {
+            LoadCardOptionQuestion(data);
+
+        }
+        else {
+            LoadQuestion(data);
+        }
+        $(objthis).parent().hide();
+        $(objthis).parent().parent().find('.inputsend').slideUp('fast');
+        AddLog(qtext, currentQuestion.message, dataobj, setval);
     }
-    $(objthis).parent().hide();
-    $(objthis).parent().parent().find('.inputsend').slideUp('fast');
-    AddLog(qtext, currentQuestion.message, dataobj, setval);
 }
 function AskNextQuestionInput(objthis) {
     var cQid = $(objthis).attr('data-var');
@@ -838,15 +868,39 @@ function AskNextQuestionCardOption(objthis) {
             datatype: 'json',
             data: { id: 300 },
             success: function (reponse) {
-
-                printSummaryForLessThe5(reponse);
+                var dddData = reponse.data;
+                printSummaryForLessThe5(dddData);
             },
             error: function (result) {
             }
         });
     }
-    else if (cQid == 400) {
+    else if (cQid == 400 || cQid == 500) {
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: '/Home/GetSummary',
+            datatype: 'json',
+            data: { id: cQid },
+            success: function (reponse) {
+                var Items = reponse.Item;
+                alert(JSON.stringify(Items));
+                for (var i = 0; i < Items.length; i++) {
+                    PrintChat(Items[i].item);
+                }
+                restvaiable();
+                var data = GetQuestionById(JData, 2001);
 
+                if (data.cards.length > 0) {
+                    LoadCardOptionQuestion(data);
+                }
+                else {
+                    LoadQuestion(data);
+                }
+            },
+            error: function (result) {
+            }
+        });
     }
     else {
         var data = GetQuestionById(JData, nextQuestionId);

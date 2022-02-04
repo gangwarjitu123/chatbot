@@ -5,6 +5,16 @@ using System.Threading.Tasks;
 
 namespace ChatBot.Common.ENTITIES
 {
+    public class DataSummary
+    {
+        public string data { get; set; }
+        public List<SummaryItem> Item { get; set; }
+    }
+    public class SummaryItem
+    {
+        public string item { get; set; }
+    }
+
     public class ProcessVar
     {
         public string startobj1 { get; set; }
@@ -42,7 +52,7 @@ namespace ChatBot.Common.ENTITIES
         public string palm_sole { get; set; }
         public string dehydration_lessthan2 { get; set; }
         public string routineassessment { get; set; }
-        public string breastfedno { get; set; }
+        public int breastfedno { get; set; }
         public string feedingproblem { get; set; }
         public string vacforage { get; set; }
         public string gds { get; set; }
