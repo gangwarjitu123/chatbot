@@ -291,7 +291,7 @@ namespace ChatBot.Controllers
                 if (id == 30001)
                 {
                     int flg = 0;
-                    if (AnwerVariable.covidtest == "Yes" || AnwerVariable.covidantigentest == "Positvie" || AnwerVariable.contactwithcovid == "Yes")
+                    if (AnwerVariable.covidtest == "Positvie" || AnwerVariable.covidantigentest == "Positvie" || AnwerVariable.contactwithcovid == "Yes")
                     {
                         if (AnwerVariable.feversince > 2)
                         {
@@ -509,11 +509,11 @@ namespace ChatBot.Controllers
                         }
                     }
                 }
-                else if (id == 300)
+                else if (id == 300 || id == 200)
                 {
 
                     int flg = 0;
-                    if (AnwerVariable.covidtest == "Yes" || AnwerVariable.covidantigentest == "Positvie" || AnwerVariable.contactwithcovid == "Yes")
+                    if (AnwerVariable.covidtest == "Positvie" || AnwerVariable.covidantigentest == "Positvie" || AnwerVariable.contactwithcovid == "Yes")
                     {
                         if (AnwerVariable.feversince > 2)
                         {
@@ -533,7 +533,7 @@ namespace ChatBot.Controllers
                             {
                                 flg = 1;
                             }
-                            else if (AnwerVariable.presentingwith.Contains("Diarrhoea") && AnwerVariable.lookforassociated.Contains("Blue discoloration"))
+                            else if (AnwerVariable.presentingwith.Contains("Diarrhoea") && AnwerVariable.lookforassociated.Contains("Bluish discoloration of mouth, lips, tongue"))
                             {
                                 flg = 1;
                             }
@@ -565,7 +565,7 @@ namespace ChatBot.Controllers
                             {
                                 flg = 1;
                             }
-                            else if (AnwerVariable.presentingwith.Contains("Vomiting") && AnwerVariable.lookforassociated.Contains("Blue discoloration"))
+                            else if (AnwerVariable.presentingwith.Contains("Vomiting") && AnwerVariable.lookforassociated.Contains("Bluish discoloration of mouth, lips, tongue"))
                             {
                                 flg = 1;
                             }
@@ -594,7 +594,7 @@ namespace ChatBot.Controllers
                             {
                                 flg = 1;
                             }
-                            else if (AnwerVariable.presentingwith.Contains("Abdominal Pain") && AnwerVariable.lookforassociated.Contains("Blue discoloration"))
+                            else if (AnwerVariable.presentingwith.Contains("Abdominal Pain") && AnwerVariable.lookforassociated.Contains("Bluish discoloration of mouth, lips, tongue"))
                             {
                                 flg = 1;
                             }
@@ -623,7 +623,7 @@ namespace ChatBot.Controllers
                             {
                                 flg = 1;
                             }
-                            else if (AnwerVariable.presentingwith.Contains("Rash") && AnwerVariable.lookforassociated.Contains("Blue discoloration"))
+                            else if (AnwerVariable.presentingwith.Contains("Rash") && AnwerVariable.lookforassociated.Contains("Bluish discoloration of mouth, lips, tongue"))
                             {
                                 flg = 1;
                             }
@@ -904,7 +904,7 @@ namespace ChatBot.Controllers
                                         obj9.item += "Make arrangements for referral in a well-equipped ambulance (with oxygen support and trained paramedic) and inform the receiving facility to secure a bed<br />";
                                         objItem.Add(obj9);
 
-                                        if (AnwerVariable.covidtest == "Test not done" && AnwerVariable.covidantigentest == "Not Conducted")
+                                        if (AnwerVariable.covidtest == "Test not done" || AnwerVariable.covidantigentest == "Not Conducted")
                                         {
                                             objItem.Add(new SummaryItem() { item = "Advice for COVID 19 testing" });
                                         }
@@ -956,7 +956,7 @@ namespace ChatBot.Controllers
                                     obj91.item += "Refer Immediately to Paediatric DCHC/SDH/CH/CHC<br />";
                                     obj91.item += "Make arrangements for referral in a well-equipped ambulance and inform the receiving facility to secure a bed<br />";
                                     objItem.Add(obj91);
-                                    if (AnwerVariable.covidtest == "Test not done" && AnwerVariable.covidantigentest == "Not Conducted")
+                                    if (AnwerVariable.covidtest == "Test not done" || AnwerVariable.covidantigentest == "Not Conducted")
                                     {
                                         objItem.Add(new SummaryItem() { item = "Advice for COVID 19 testing" });
                                     }
@@ -1016,7 +1016,7 @@ namespace ChatBot.Controllers
                                 obj49.item += "In young infant- keep the baby warm on way to hospital<br />";
                                 objItem.Add(obj49);
 
-                                if (AnwerVariable.covidtest == "Test not done" && AnwerVariable.covidantigentest == "Not Conducted")
+                                if (AnwerVariable.covidtest == "Test not done" || AnwerVariable.covidantigentest == "Not Conducted")
                                 {
                                     objItem.Add(new SummaryItem() { item = "Advice for COVID 19 testing" });
                                 }
@@ -1085,7 +1085,7 @@ namespace ChatBot.Controllers
                                 }
                                 if(kk==0)
                                 {
-                                    if (AnwerVariable.covidtest == "Test not done" && AnwerVariable.covidantigentest == "Not Conducted")
+                                    if (AnwerVariable.covidtest == "Test not done" || AnwerVariable.covidantigentest == "Not Conducted")
                                     {
                                         objItem.Add(new SummaryItem() { item = "Advice for COVID 19 testing" });
                                     }

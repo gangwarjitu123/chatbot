@@ -153,7 +153,7 @@
               "name": "Runny Nose"
             },
             {
-              "name": "Loss of test/smell"
+              "name": "Loss of taste/smell"
             },
             {
               "name": "No symptom"
@@ -398,12 +398,12 @@
       "input": [],
       "buttons": [
         {
-          "text": "Yes",
+          "text": "Positive",
           "val": "Yes",
           "click": "16"
         },
         {
-          "text": "No",
+          "text": "Negative",
           "val": "No",
           "click": "16"
         },
@@ -797,13 +797,10 @@
               "name": "Fever"
             },
             {
-              "name": "Common Cold"
-            },
-            {
               "name": "Cough"
             },
             {
-              "name": "Breathing difficulties"
+              "name": "Difficulty in breathing"
             },
             {
               "name": "Rash"
@@ -1030,12 +1027,12 @@
       "input": [],
       "buttons": [
         {
-          "text": "Yes",
+          "text": "Positive",
           "val": "Yes",
           "click": "37"
         },
         {
-          "text": "No",
+          "text": "Negative",
           "val": "No",
           "click": "37"
         },
@@ -1212,7 +1209,7 @@
               "name": "Skin pinch goes back very slowly (> 2 sec)"
             },
             {
-              "name": "Blue discoloration"
+              "name": "Bluish discoloration of mouth, lips, tongue"
             },
             {
               "name": "None"

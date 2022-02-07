@@ -498,7 +498,7 @@ function AskmultibuttonQuestion(objthis) {
             cQid = 500;
         }
     }
-    if (cQid == 400 || cQid == 500 || cQid == 300) {
+    if (cQid == 400 || cQid == 500 || cQid == 300 || cQid == 200) {
         $.ajax({
             type: "POST",
             async: false,
@@ -855,10 +855,7 @@ function AskNextQuestionCardOption(objthis) {
     LoadUserSentMessage(qtext);
     AddLog(qtext, currentQuestion.message, dataobj, qtext);
 
-    if (cQid == 200) {
-        summaryfunMorethen5();
-    }
-    else if (cQid == 400 || cQid == 500 || cQid == 300) {
+    if (cQid == 400 || cQid == 500 || cQid == 300 || cQid == 200) {
         $.ajax({
             type: "POST",
             async: false,
