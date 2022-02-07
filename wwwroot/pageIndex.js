@@ -498,7 +498,7 @@ function AskmultibuttonQuestion(objthis) {
             cQid = 500;
         }
     }
-    if (cQid == 400 || cQid == 500) {
+    if (cQid == 400 || cQid == 500 || cQid == 300) {
         $.ajax({
             type: "POST",
             async: false,
@@ -858,22 +858,7 @@ function AskNextQuestionCardOption(objthis) {
     if (cQid == 200) {
         summaryfunMorethen5();
     }
-    else if (cQid == 300) {
-        $.ajax({
-            type: "POST",
-            async: false,
-            url: '/Home/GetSummary',
-            datatype: 'json',
-            data: { id: 300 },
-            success: function (reponse) {
-                var dddData = reponse.data;
-                printSummaryForLessThe5(dddData);
-            },
-            error: function (result) {
-            }
-        });
-    }
-    else if (cQid == 400 || cQid == 500) {
+    else if (cQid == 400 || cQid == 500 || cQid == 300) {
         $.ajax({
             type: "POST",
             async: false,

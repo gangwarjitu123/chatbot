@@ -288,7 +288,7 @@ namespace ChatBot.Controllers
             if (ddData != null)
             {
                 ProcessVar AnwerVariable = (ProcessVar)ddData;
-                if (id == 300)
+                if (id == 30001)
                 {
                     int flg = 0;
                     if (AnwerVariable.covidtest == "Yes" || AnwerVariable.covidantigentest == "Positvie" || AnwerVariable.contactwithcovid == "Yes")
@@ -504,6 +504,689 @@ namespace ChatBot.Controllers
                                 else
                                 {
                                     children = "normal";
+                                }
+                            }
+                        }
+                    }
+                }
+                else if (id == 300)
+                {
+
+                    int flg = 0;
+                    if (AnwerVariable.covidtest == "Yes" || AnwerVariable.covidantigentest == "Positvie" || AnwerVariable.contactwithcovid == "Yes")
+                    {
+                        if (AnwerVariable.feversince > 2)
+                        {
+                            if (AnwerVariable.presentingwith.Contains("Diarrhoea") && AnwerVariable.presentingwith.Contains("Vomiting"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Diarrhoea") && AnwerVariable.presentingwith.Contains("Abdominal Pain"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Diarrhoea") && AnwerVariable.presentingwith.Contains("Rash"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Diarrhoea") && AnwerVariable.presentingwith.Contains("Redness in both eyes"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Diarrhoea") && AnwerVariable.lookforassociated.Contains("Blue discoloration"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Diarrhoea") && AnwerVariable.spo2applicable == "Yes" && AnwerVariable.spo2rate < 91)
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Diarrhoea") && AnwerVariable.lookforassociated.Contains("Lethargic or Unconscious"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Diarrhoea") && AnwerVariable.lookforassociated.Contains("Cold extremities"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Diarrhoea") && AnwerVariable.presentingwith.Contains("Abdominal Pain"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Vomiting") && AnwerVariable.presentingwith.Contains("Abdominal Pain"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Vomiting") && AnwerVariable.presentingwith.Contains("Rash"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Vomiting") && AnwerVariable.presentingwith.Contains("Redness in both eyes"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Vomiting") && AnwerVariable.lookforassociated.Contains("Blue discoloration"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Vomiting") && AnwerVariable.lookforassociated.Contains("Bluish discoloration of mouth, lips, tongue"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Vomiting") && AnwerVariable.spo2applicable == "Yes" && AnwerVariable.spo2rate < 91)
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Vomiting") && AnwerVariable.lookforassociated.Contains("Lethargic or Unconscious"))
+                            {
+                                flg = 1;
+                            }
+
+                            else if (AnwerVariable.presentingwith.Contains("Vomiting") && AnwerVariable.lookforassociated.Contains("Cold extremities"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Abdominal Pain") && AnwerVariable.presentingwith.Contains("Rash"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Abdominal Pain") && AnwerVariable.presentingwith.Contains("Redness in both eyes"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Abdominal Pain") && AnwerVariable.lookforassociated.Contains("Blue discoloration"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Abdominal Pain") && AnwerVariable.lookforassociated.Contains("Bluish discoloration of mouth, lips, tongue"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Abdominal Pain") && AnwerVariable.spo2applicable == "Yes" && AnwerVariable.spo2rate < 91)
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Abdominal Pain") && AnwerVariable.lookforassociated.Contains("Lethargic or Unconscious"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Abdominal Pain") && AnwerVariable.lookforassociated.Contains("Lethargic or Unconscious"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Abdominal Pain") && AnwerVariable.lookforassociated.Contains("Cold extremities"))
+                            {
+                                flg = 1;
+                            }
+
+                            else if (AnwerVariable.presentingwith.Contains("Rash") && AnwerVariable.presentingwith.Contains("Redness in both eyes"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Rash") && AnwerVariable.lookforassociated.Contains("Blue discoloration"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Rash") && AnwerVariable.lookforassociated.Contains("Bluish discoloration of mouth, lips, tongue"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Rash") && AnwerVariable.spo2applicable == "Yes" && AnwerVariable.spo2rate < 91)
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Rash") && AnwerVariable.lookforassociated.Contains("Lethargic or Unconscious"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Rash") && AnwerVariable.lookforassociated.Contains("Cold extremities"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Redness in both eyes") && AnwerVariable.lookforassociated.Contains("Bluish discoloration of mouth, lips, tongue"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Redness in both eyes") && AnwerVariable.spo2applicable == "Yes" && AnwerVariable.spo2rate < 91)
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Redness in both eyes") && AnwerVariable.lookforassociated.Contains("Lethargic or Unconscious"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Redness in both eyes") && AnwerVariable.lookforassociated.Contains("Cold extremities"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.lookforassociated.Contains("Bluish discoloration of mouth, lips, tongue") && AnwerVariable.lookforassociated.Contains("Lethargic or Unconscious"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Bluish discoloration of mouth, lips, tongue") && AnwerVariable.spo2applicable == "Yes" && AnwerVariable.spo2rate < 91)
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Bluish discoloration of mouth, lips, tongue") && AnwerVariable.lookforassociated.Contains("Cold extremities"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Lethargic or Unconscious") && AnwerVariable.lookforassociated.Contains("Cold extremities"))
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.presentingwith.Contains("Lethargic or Unconscious") && AnwerVariable.spo2applicable == "Yes" && AnwerVariable.spo2rate < 91)
+                            {
+                                flg = 1;
+                            }
+                            else if (AnwerVariable.lookforassociated.Contains("Cold extremities") && AnwerVariable.spo2applicable == "Yes" && AnwerVariable.spo2rate < 91)
+                            {
+                                flg = 1;
+                            }
+                            if (flg == 1)
+                            {
+                                SummaryItem obj9 = new SummaryItem();
+                                obj9.item += "Give age appropriate dose of Paracetamol for fever >100F<br />";
+                                obj9.item += "Give pre-referral dose of Oral Amoxicillin<br />";
+                                obj9.item += "Refer Immediately to Paediatric DCH/HDU/ICU<br />";
+                                obj9.item += "Make arrangements for referral in a well-equipped ambulance (with oxygen support and trained paramedic) and inform the receiving facility to secure a bed<br />";
+                                objItem.Add(obj9);
+
+                                if (AnwerVariable.covidtest == "Test not done" && AnwerVariable.covidantigentest == "Not Conducted")
+                                {
+                                    objItem.Add(new SummaryItem() { item = "Advice for COVID 19 testing" });
+                                }
+
+                                if (AnwerVariable.weight < 2.1m)
+                                {
+                                    objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 50 mg" });
+                                }
+                                else if (AnwerVariable.weight > 2 && AnwerVariable.weight < 3.1m)
+                                {
+                                    objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 62 mg" });
+                                }
+                                else if (AnwerVariable.weight > 3 && AnwerVariable.weight < 4.1m)
+                                {
+                                    objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 87 mg" });
+                                }
+                                else if (AnwerVariable.weight > 4 && AnwerVariable.weight < 6.1m)
+                                {
+                                    objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 125 mg" });
+                                    objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 100 mg" });
+                                }
+                                else if (AnwerVariable.weight > 6 && AnwerVariable.weight < 10.1m)
+                                {
+                                    objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 250 mg" });
+                                    objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 100 mg" });
+                                }
+                                else if (AnwerVariable.weight > 10 && AnwerVariable.weight < 14.1m)
+                                {
+                                    objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 375 mg" });
+                                    objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 150 mg" });
+                                }
+                                else if (AnwerVariable.weight > 14 && AnwerVariable.weight < 20.1m)
+                                {
+                                    objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 500 mg" });
+                                    objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 250 mg" });
+                                }
+                                else if (AnwerVariable.weight > 20)
+                                {
+                                    objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 500 mg" });
+                                    objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 500 mg" });
+                                }
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        int flg2 = 0;
+                        if (AnwerVariable.ageinmonth < 2 && AnwerVariable.breathcount > 59 && AnwerVariable.severechestindrawing == "Yes" && AnwerVariable.ageinyear == 0)
+                        {
+                            flg2 = 1;
+                        }
+                        else if (AnwerVariable.ageinmonth > 1 && AnwerVariable.ageinmonth < 12 && AnwerVariable.breathcount > 49 && AnwerVariable.severechestindrawing == "Yes" && AnwerVariable.ageinyear == 0)
+                        {
+                            flg2 = 1;
+                        }
+                        else if (AnwerVariable.ageinyear > 0 && AnwerVariable.ageinyear < 6 && AnwerVariable.breathcount > 39 && AnwerVariable.severechestindrawing == "Yes")
+                        {
+                            flg2 = 1;
+                        }
+                        else if (AnwerVariable.ageinyear > 5 && AnwerVariable.breathcount > 29 && AnwerVariable.severechestindrawing == "Yes")
+                        {
+                            flg2 = 1;
+                        }
+                        if (AnwerVariable.ageinmonth < 2 && AnwerVariable.breathcount > 59 && AnwerVariable.severechestindrawing == "No" && AnwerVariable.ageinyear == 0)
+                        {
+                            flg2 = 2;
+                        }
+                        else if (AnwerVariable.ageinmonth > 1 && AnwerVariable.ageinmonth < 12 && AnwerVariable.breathcount > 49 && AnwerVariable.severechestindrawing == "No" && AnwerVariable.ageinyear == 0)
+                        {
+                            flg2 = 2;
+                        }
+                        else if (AnwerVariable.ageinyear > 0 && AnwerVariable.ageinyear < 6 && AnwerVariable.breathcount > 39 && AnwerVariable.severechestindrawing == "No")
+                        {
+                            flg2 = 2;
+                        }
+                        else if (AnwerVariable.ageinyear > 5 && AnwerVariable.breathcount > 29 && AnwerVariable.severechestindrawing == "No")
+                        {
+                            flg2 = 2;
+                        }
+
+                        if (flg2 == 1)
+                        {
+                            if (AnwerVariable.nasalflaring == "Yes" || AnwerVariable.noiseduringbreathing == "Yes" || AnwerVariable.lookforassociated == "Cold Extremities" || AnwerVariable.lookforassociated == "Unable to drink/feed")
+                            {
+                                SummaryItem obj9 = new SummaryItem();
+                                obj9.item += "Home isolation (if not possible - refer to Covid Care Centre)<br />";
+                                obj9.item += "Daily teleconsultation with CCC<br />";
+                                obj9.item += "Supportive care & rest<br />";
+                                obj9.item += "Adequate hydration and continue feeding<br />";
+                                obj9.item += "Thrice a day monitoring:  SpO2,Respiratory Rate (Breaths count in 1 min), Temperature<br />";
+                                objItem.Add(obj9);
+                                if (AnwerVariable.weight > 4)
+                                {
+                                    if (AnwerVariable.weight > 3.9m && AnwerVariable.weight < 10m)
+                                    {
+                                        objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol 100 mg dose can be given for fever" });
+                                    }
+                                    else if (AnwerVariable.weight > 9.9m && AnwerVariable.weight < 15)
+                                    {
+                                        objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol 150 mg dose can be given for fever" });
+                                    }
+                                    else if (AnwerVariable.weight > 14.9m && AnwerVariable.weight < 20)
+                                    {
+                                        objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol 250 mg dose can be given for fever" });
+                                    }
+                                    else if (AnwerVariable.weight > 19.9m)
+                                    {
+                                        objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol 500 mg dose can be given for fever" });
+                                    }
+                                }
+                                if (AnwerVariable.ageinyear == 0 && AnwerVariable.ageinmonth < 2)
+                                {
+                                    SummaryItem obj12 = new SummaryItem();
+                                    obj12.item += "  Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />";
+                                    obj12.item += "- SpO 2 < 94 <br />";
+                                    obj12.item += "- Breaths count in 1 min: more than 59  <br />";
+                                    obj12.item += "- Difficulty in Breathing <br />";
+                                    obj12.item += "- Unremitting fever for 5 days/Temperature > 37.5 C<br />";
+                                    obj12.item += "- Temperature <35.5 C<br />";
+                                    obj12.item += "- Unable to drink/breastfeed<br />";
+                                    obj12.item += "- Child become sick<br />";
+                                    obj12.item += "- Blood in stool<br />";
+                                    objItem.Add(obj12);
+                                }
+                                else if (AnwerVariable.ageinyear == 0 && AnwerVariable.ageinmonth > 1 && AnwerVariable.ageinmonth < 12)
+                                {
+                                    SummaryItem obj12 = new SummaryItem();
+                                    obj12.item += "  Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />";
+                                    obj12.item += "- SpO 2 < 94 <br />";
+                                    obj12.item += "- Breaths count in 1 min: more than 49  <br />";
+                                    obj12.item += "- Difficulty in Breathing <br />";
+                                    obj12.item += "- Unremitting fever for 5 days/Temperature > 37.5 C<br />";
+                                    obj12.item += "- Temperature <35.5 C<br />";
+                                    obj12.item += "- Unable to drink/breastfeed<br />";
+                                    obj12.item += "- Child become sick<br />";
+                                    obj12.item += "- Blood in stool<br />";
+                                    objItem.Add(obj12);
+                                }
+                                else if (AnwerVariable.ageinyear > 0 && AnwerVariable.ageinyear < 6)
+                                {
+                                    SummaryItem obj12 = new SummaryItem();
+                                    obj12.item += "  Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />";
+                                    obj12.item += "- SpO 2 < 94 <br />";
+                                    obj12.item += "- Breaths count in 1 min: more than 39  <br />";
+                                    obj12.item += "- Difficulty in Breathing <br />";
+                                    obj12.item += "- Unremitting fever for 5 days/Temperature > 37.5 C<br />";
+                                    obj12.item += "- Temperature <35.5 C<br />";
+                                    obj12.item += "- Unable to drink/breastfeed<br />";
+                                    obj12.item += "- Child become sick<br />";
+                                    obj12.item += "- Blood in stool<br />";
+                                    objItem.Add(obj12);
+                                }
+                                else if (AnwerVariable.ageinyear > 5)
+                                {
+                                    SummaryItem obj12 = new SummaryItem();
+                                    obj12.item += "  Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />";
+                                    obj12.item += "- SpO 2 < 94 <br />";
+                                    obj12.item += "- Breaths count in 1 min: more than 29  <br />";
+                                    obj12.item += "- Difficulty in Breathing <br />";
+                                    obj12.item += "- Unremitting fever for 5 days/Temperature > 37.5 C<br />";
+                                    obj12.item += "- Temperature <35.5 C<br />";
+                                    obj12.item += "- Unable to drink/breastfeed<br />";
+                                    obj12.item += "- Child become sick<br />";
+                                    obj12.item += "- Blood in stool<br />";
+                                    objItem.Add(obj12);
+                                }
+                                if (AnwerVariable.ageinyear == 0 && AnwerVariable.ageinmonth > 0 && AnwerVariable.ageinmonth < 6)
+                                {
+                                    SummaryItem obj12 = new SummaryItem();
+                                    obj12.item += "  Home care for cough:<br />";
+                                    obj12.item += "- Continue exclusive breast feeding<br />";
+                                    obj12.item += "- Stuffy nose could be cleaned with saline nasal drops (by ading 2.5 gm salt in 1 glass of clean drinking water)<br />";
+                                    objItem.Add(obj12);
+                                }
+                                else
+                                {
+                                    SummaryItem obj12 = new SummaryItem();
+                                    obj12.item += " Home care for cough:<br />";
+                                    obj12.item += "- Home made herbal concoction of honey, tulsi, ginger, etc<br />";
+                                    obj12.item += "- Stuffy nose could be cleaned with saline nasal drops (by ading 2.5 gm salt in 1 glass of clean drinking water)<br />";
+                                    objItem.Add(obj12);
+                                }
+
+                            }
+                            else
+                            {
+                                flg2 = 2;
+                            }
+                        }
+                        if (flg2 == 2)
+                        {
+                            if (AnwerVariable.temperature > 37.4m || AnwerVariable.temperature < 35.6m || AnwerVariable.historycondition != "None" || AnwerVariable.lookforassociated.Contains("Cold extremities") || AnwerVariable.lookforassociated.Contains("Movement less than normal"))
+                            {
+                                int tmpflg = 0;
+                                if(AnwerVariable.spo2applicable=="Yes")
+                                {
+                                    if(AnwerVariable.spo2rate>90)
+                                    {
+                                        tmpflg = 0;
+                                    }
+                                    else
+                                    {
+                                        tmpflg = 1;
+                                        SummaryItem obj9 = new SummaryItem();
+                                        obj9.item += "Give age appropriate dose of Paracetamol for fever >100F<br />";
+                                        obj9.item += "Give pre-referral dose of Oral Amoxicillin<br />";
+                                        obj9.item += "Refer Immediately to Paediatric DCH/HDU/ICU<br />";
+                                        obj9.item += "Make arrangements for referral in a well-equipped ambulance (with oxygen support and trained paramedic) and inform the receiving facility to secure a bed<br />";
+                                        objItem.Add(obj9);
+
+                                        if (AnwerVariable.covidtest == "Test not done" && AnwerVariable.covidantigentest == "Not Conducted")
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Advice for COVID 19 testing" });
+                                        }
+
+                                        if (AnwerVariable.weight < 2.1m)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 50 mg" });
+                                        }
+                                        else if (AnwerVariable.weight > 2 && AnwerVariable.weight < 3.1m)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 62 mg" });
+                                        }
+                                        else if (AnwerVariable.weight > 3 && AnwerVariable.weight < 4.1m)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 87 mg" });
+                                        }
+                                        else if (AnwerVariable.weight > 4 && AnwerVariable.weight < 6.1m)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 125 mg" });
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 100 mg" });
+                                        }
+                                        else if (AnwerVariable.weight > 6 && AnwerVariable.weight < 10.1m)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 250 mg" });
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 100 mg" });
+                                        }
+                                        else if (AnwerVariable.weight > 10 && AnwerVariable.weight < 14.1m)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 375 mg" });
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 150 mg" });
+                                        }
+                                        else if (AnwerVariable.weight > 14 && AnwerVariable.weight < 20.1m)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 500 mg" });
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 250 mg" });
+                                        }
+                                        else if (AnwerVariable.weight > 20)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 500 mg" });
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 500 mg" });
+                                        }
+                                    }
+                                }
+                               if(tmpflg==0)
+                                {
+                                    SummaryItem obj91 = new SummaryItem();
+                                    obj91.item += "Give age appropriate dose of Paracetamol for fever >100F<br />";
+                                    obj91.item += "Give pre-referral dose of Oral Amoxicillin<br />";
+                                    obj91.item += "Refer Immediately to Paediatric DCHC/SDH/CH/CHC<br />";
+                                    obj91.item += "Make arrangements for referral in a well-equipped ambulance and inform the receiving facility to secure a bed<br />";
+                                    objItem.Add(obj91);
+                                    if (AnwerVariable.covidtest == "Test not done" && AnwerVariable.covidantigentest == "Not Conducted")
+                                    {
+                                        objItem.Add(new SummaryItem() { item = "Advice for COVID 19 testing" });
+                                    }
+
+                                    if (AnwerVariable.weight < 2.1m)
+                                    {
+                                        objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 50 mg" });
+                                    }
+                                    else if (AnwerVariable.weight > 2 && AnwerVariable.weight < 3.1m)
+                                    {
+                                        objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 62 mg" });
+                                    }
+                                    else if (AnwerVariable.weight > 3 && AnwerVariable.weight < 4.1m)
+                                    {
+                                        objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 87 mg" });
+                                    }
+                                    else if (AnwerVariable.weight > 4 && AnwerVariable.weight < 6.1m)
+                                    {
+                                        objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 125 mg" });
+                                        objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 100 mg" });
+                                    }
+                                    else if (AnwerVariable.weight > 6 && AnwerVariable.weight < 10.1m)
+                                    {
+                                        objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 250 mg" });
+                                        objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 100 mg" });
+                                    }
+                                    else if (AnwerVariable.weight > 10 && AnwerVariable.weight < 14.1m)
+                                    {
+                                        objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 375 mg" });
+                                        objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 150 mg" });
+                                    }
+                                    else if (AnwerVariable.weight > 14 && AnwerVariable.weight < 20.1m)
+                                    {
+                                        objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 500 mg" });
+                                        objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 250 mg" });
+                                    }
+                                    else if (AnwerVariable.weight > 20)
+                                    {
+                                        objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 500 mg" });
+                                        objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 500 mg" });
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                flg = 0;
+                            }
+                        }
+                        if (flg == 0)
+                        {
+                            if (AnwerVariable.lookforassociated.Contains("Lethargic or Unconscious") || AnwerVariable.lookforassociated.Contains("Convulsion or History of convulsion") || AnwerVariable.lookforassociated.Contains("Unable to drink or feed"))
+                            {
+                                SummaryItem obj49 = new SummaryItem();
+                                obj49.item += "Refer immediately to hospital/CCC<br />";
+                                obj49.item += "Advice to continue breastfeeding (if able to take orally)<br />";
+                                obj49.item += "In young infant- keep the baby warm on way to hospital<br />";
+                                objItem.Add(obj49);
+
+                                if (AnwerVariable.covidtest == "Test not done" && AnwerVariable.covidantigentest == "Not Conducted")
+                                {
+                                    objItem.Add(new SummaryItem() { item = "Advice for COVID 19 testing" });
+                                }
+                            }
+                            else
+                            {
+                                int kk = 0;
+                                if (AnwerVariable.spo2applicable == "Yes")
+                                {
+                                    if(AnwerVariable.spo2rate>93)
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        kk =1;
+                                        SummaryItem obj91 = new SummaryItem();
+                                        obj91.item += "Give age appropriate dose of Paracetamol for fever >100F<br />";
+                                        obj91.item += "Give pre-referral dose of Oral Amoxicillin<br />";
+                                        obj91.item += "Refer Immediately to Paediatric DCHC/SDH/CH/CHC<br />";
+                                        obj91.item += "Make arrangements for referral in a well-equipped ambulance and inform the receiving facility to secure a bed<br />";
+                                        objItem.Add(obj91);
+                                        if (AnwerVariable.covidtest == "Test not done" && AnwerVariable.covidantigentest == "Not Conducted")
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Advice for COVID 19 testing" });
+                                        }
+
+                                        if (AnwerVariable.weight < 2.1m)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 50 mg" });
+                                        }
+                                        else if (AnwerVariable.weight > 2 && AnwerVariable.weight < 3.1m)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 62 mg" });
+                                        }
+                                        else if (AnwerVariable.weight > 3 && AnwerVariable.weight < 4.1m)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 87 mg" });
+                                        }
+                                        else if (AnwerVariable.weight > 4 && AnwerVariable.weight < 6.1m)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 125 mg" });
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 100 mg" });
+                                        }
+                                        else if (AnwerVariable.weight > 6 && AnwerVariable.weight < 10.1m)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 250 mg" });
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 100 mg" });
+                                        }
+                                        else if (AnwerVariable.weight > 10 && AnwerVariable.weight < 14.1m)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 375 mg" });
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 150 mg" });
+                                        }
+                                        else if (AnwerVariable.weight > 14 && AnwerVariable.weight < 20.1m)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 500 mg" });
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 250 mg" });
+                                        }
+                                        else if (AnwerVariable.weight > 20)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Amoxicillin : 500 mg" });
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol : 500 mg" });
+                                        }
+                                    }
+                                }
+                                if(kk==0)
+                                {
+                                    if (AnwerVariable.covidtest == "Test not done" && AnwerVariable.covidantigentest == "Not Conducted")
+                                    {
+                                        objItem.Add(new SummaryItem() { item = "Advice for COVID 19 testing" });
+                                    }
+                                    SummaryItem obj9 = new SummaryItem();
+                                    obj9.item += "Home isolation (if not possible - refer to Covid Care Centre)<br />";
+                                    obj9.item += "Daily teleconsultation with CCC<br />";
+                                    obj9.item += "Supportive care & rest<br />";
+                                    obj9.item += "Adequate hydration and continue feeding<br />";
+                                    obj9.item += "Thrice a day monitoring:  SpO2,Respiratory Rate (Breaths count in 1 min), Temperature<br />";
+                                    objItem.Add(obj9);
+                                    if (AnwerVariable.weight > 4)
+                                    {
+                                        if (AnwerVariable.weight > 3.9m && AnwerVariable.weight < 10m)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol 100 mg dose can be given for fever" });
+                                        }
+                                        else if (AnwerVariable.weight > 9.9m && AnwerVariable.weight < 15)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol 150 mg dose can be given for fever" });
+                                        }
+                                        else if (AnwerVariable.weight > 14.9m && AnwerVariable.weight < 20)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol 250 mg dose can be given for fever" });
+                                        }
+                                        else if (AnwerVariable.weight > 19.9m)
+                                        {
+                                            objItem.Add(new SummaryItem() { item = "Tab/Syp Paracetamol 500 mg dose can be given for fever" });
+                                        }
+                                    }
+                                    if (AnwerVariable.ageinyear == 0 && AnwerVariable.ageinmonth < 2)
+                                    {
+                                        SummaryItem obj12 = new SummaryItem();
+                                        obj12.item += "  Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />";
+                                        obj12.item += "- SpO 2 < 94 <br />";
+                                        obj12.item += "- Breaths count in 1 min: more than 59  <br />";
+                                        obj12.item += "- Difficulty in Breathing <br />";
+                                        obj12.item += "- Unremitting fever for 5 days/Temperature > 37.5 C<br />";
+                                        obj12.item += "- Temperature <35.5 C<br />";
+                                        obj12.item += "- Unable to drink/breastfeed<br />";
+                                        obj12.item += "- Child become sick<br />";
+                                        obj12.item += "- Blood in stool<br />";
+                                        objItem.Add(obj12);
+                                    }
+                                    else if (AnwerVariable.ageinyear == 0 && AnwerVariable.ageinmonth > 1 && AnwerVariable.ageinmonth < 12)
+                                    {
+                                        SummaryItem obj12 = new SummaryItem();
+                                        obj12.item += "  Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />";
+                                        obj12.item += "- SpO 2 < 94 <br />";
+                                        obj12.item += "- Breaths count in 1 min: more than 49  <br />";
+                                        obj12.item += "- Difficulty in Breathing <br />";
+                                        obj12.item += "- Unremitting fever for 5 days/Temperature > 37.5 C<br />";
+                                        obj12.item += "- Temperature <35.5 C<br />";
+                                        obj12.item += "- Unable to drink/breastfeed<br />";
+                                        obj12.item += "- Child become sick<br />";
+                                        obj12.item += "- Blood in stool<br />";
+                                        objItem.Add(obj12);
+                                    }
+                                    else if (AnwerVariable.ageinyear > 0 && AnwerVariable.ageinyear < 6)
+                                    {
+                                        SummaryItem obj12 = new SummaryItem();
+                                        obj12.item += "  Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />";
+                                        obj12.item += "- SpO 2 < 94 <br />";
+                                        obj12.item += "- Breaths count in 1 min: more than 39  <br />";
+                                        obj12.item += "- Difficulty in Breathing <br />";
+                                        obj12.item += "- Unremitting fever for 5 days/Temperature > 37.5 C<br />";
+                                        obj12.item += "- Temperature <35.5 C<br />";
+                                        obj12.item += "- Unable to drink/breastfeed<br />";
+                                        obj12.item += "- Child become sick<br />";
+                                        obj12.item += "- Blood in stool<br />";
+                                        objItem.Add(obj12);
+                                    }
+                                    else if (AnwerVariable.ageinyear > 5)
+                                    {
+                                        SummaryItem obj12 = new SummaryItem();
+                                        obj12.item += "  Advice to monitor danger sign/s & return immediately if any of following sign/symptoms appear:<br />";
+                                        obj12.item += "- SpO 2 < 94 <br />";
+                                        obj12.item += "- Breaths count in 1 min: more than 29  <br />";
+                                        obj12.item += "- Difficulty in Breathing <br />";
+                                        obj12.item += "- Unremitting fever for 5 days/Temperature > 37.5 C<br />";
+                                        obj12.item += "- Temperature <35.5 C<br />";
+                                        obj12.item += "- Unable to drink/breastfeed<br />";
+                                        obj12.item += "- Child become sick<br />";
+                                        obj12.item += "- Blood in stool<br />";
+                                        objItem.Add(obj12);
+                                    }
+                                    if (AnwerVariable.ageinyear == 0 && AnwerVariable.ageinmonth > 0 && AnwerVariable.ageinmonth < 6)
+                                    {
+                                        SummaryItem obj12 = new SummaryItem();
+                                        obj12.item += "  Home care for cough:<br />";
+                                        obj12.item += "- Continue exclusive breast feeding<br />";
+                                        obj12.item += "- Stuffy nose could be cleaned with saline nasal drops (by ading 2.5 gm salt in 1 glass of clean drinking water)<br />";
+                                        objItem.Add(obj12);
+                                    }
+                                    else
+                                    {
+                                        SummaryItem obj12 = new SummaryItem();
+                                        obj12.item += " Home care for cough:<br />";
+                                        obj12.item += "- Home made herbal concoction of honey, tulsi, ginger, etc<br />";
+                                        obj12.item += "- Stuffy nose could be cleaned with saline nasal drops (by ading 2.5 gm salt in 1 glass of clean drinking water)<br />";
+                                        objItem.Add(obj12);
+                                    }
                                 }
                             }
                         }
@@ -1178,7 +1861,7 @@ namespace ChatBot.Controllers
                             if (AnwerVariable.malariardt == "Positive")
                             {
                                 SummaryItem obj3 = new SummaryItem();
-                                 obj3.item += "Child is having Malaria / Suspected Malaria<br />";
+                                obj3.item += "Child is having Malaria / Suspected Malaria<br />";
                                 obj3.item += "Give oral antimalarial as per national guidelines after making a smear<br />";
                                 obj3.item += "Give first dose of paracetamol for high fever (>= 38.5 C)<br />";
                                 obj3.item += "Advise mother when to return immediately<br />";
