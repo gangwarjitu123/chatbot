@@ -434,7 +434,7 @@ function AskmultibuttonQuestion(objthis) {
             break;
     }
     if (curentqid == 17) {
-        if (covidtest == "Yes") {
+        if (covidtest == "Positive") {
             cQid = 19;
         }
         else {
@@ -442,8 +442,8 @@ function AskmultibuttonQuestion(objthis) {
         }
     }
     if (curentqid == 38) {
-        if (covidtest == "Yes") {
-            cQid = 40;
+        if (covidtest == "Positive") {
+            cQid = 42;
         }
         else {
             cQid = 39;
