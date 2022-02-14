@@ -895,6 +895,9 @@ namespace ChatBot.Controllers
                 }
                 else if (id == 400)
                 {
+                    if (string.IsNullOrEmpty(AnwerVariable.dehydration_lessthan2))
+                        AnwerVariable.dehydration_lessthan2 = "";
+
                     if (AnwerVariable.routineassessment == "Not feeding well or Not able to feed" || AnwerVariable.routineassessment == "Child had convulsions" || AnwerVariable.breathcount > 59)
                     {
                         SummaryItem obj1 = new SummaryItem();
@@ -926,11 +929,13 @@ namespace ChatBot.Controllers
 
                         if (AnwerVariable.ageinweek == 0)
                         {
-                            obj3.item = "Inj Gentamicin genta_less_7_days mg";
+                            var genta_less_7_days = 5 * AnwerVariable.weight;
+                            obj3.item = "Inj Gentamicin " + genta_less_7_days + " mg";
                         }
                         else
                         {
-                            obj3.item = "Inj Gentamicin genta_more_7_days mg";
+                            var genta_more_7_days = 7.5m * AnwerVariable.weight;
+                            obj3.item = "Inj Gentamicin " + genta_more_7_days + " mg";
                         }
                         objItem.Add(obj1);
                         objItem.Add(obj2);
@@ -1204,6 +1209,10 @@ namespace ChatBot.Controllers
                 }
                 else if (id == 500)
                 {
+                    if (string.IsNullOrEmpty(AnwerVariable.dehydration_graterthan2))
+                    {
+                        AnwerVariable.dehydration_graterthan2 = "";
+                    }
                     if (AnwerVariable.gds.Contains("Lethargic or Unconscious") || AnwerVariable.gds.Contains("Not able to drink or breastfeed") || AnwerVariable.gds.Contains("Vomits everything"))
                     {
                         SummaryItem obj9 = new SummaryItem();
@@ -1463,29 +1472,36 @@ namespace ChatBot.Controllers
                         else
                         {
                             //Child is having Diarrhoea with No Dehydration
-
+                            objItem.Add(new SummaryItem() { item = "Child is having Diarrhoea with No Dehydration" });
                             //Give fluid(ORS), zinc suppliments and food to treat diarrhoea at home(Plan A)
+                            objItem.Add(new SummaryItem() { item = "Give fluid(ORS), zinc suppliments and food to treat diarrhoea at home(Plan A)" });
                             //Follow up after 2 days if not improving
+                            objItem.Add(new SummaryItem() { item = "Follow up after 2 days if not improving" });
 
                             if (AnwerVariable.ageinyear == 0 && AnwerVariable.ageinmonth > 1 && AnwerVariable.ageinmonth < 12)
                             {
                                 //ORS: 1/4 to 1/2 cup after each loose stool
+                                objItem.Add(new SummaryItem() { item = "ORS: 1/4 to 1/2 cup after each loose stool" });
                             }
                             else if (AnwerVariable.ageinyear > 0 && AnwerVariable.ageinyear < 3)
                             {
                                 //ORS: 1/4 to 1/2 cup after each loose stool
+                                objItem.Add(new SummaryItem() { item = "ORS: 1/4 to 1/2 cup after each loose stool" });
                             }
                             else if (AnwerVariable.ageinyear > 2)
                             {
                                 //ORS: 1/2 to 1 cup after each loose stool
+                                objItem.Add(new SummaryItem() { item = "ORS: 1/2 to 1 cup after each loose stool" });
                             }
                             if (AnwerVariable.ageinyear == 0 && AnwerVariable.ageinmonth > 1 && AnwerVariable.ageinmonth < 7)
                             {
                                 //Tab Zinc 10 mg for 14 days
+                                objItem.Add(new SummaryItem() { item = "Tab Zinc 10 mg for 14 days" });
                             }
                             else if (AnwerVariable.ageinyear == 0 && AnwerVariable.ageinmonth < 6)
                             {
                                 //Tab Zinc 20 mg for 14 days
+                                objItem.Add(new SummaryItem() { item = "Tab Zinc 20 mg for 14 days" });
                             }
                         }
                     }

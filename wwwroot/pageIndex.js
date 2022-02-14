@@ -523,6 +523,8 @@ function AskmultibuttonQuestion(objthis) {
             error: function (result) {
             }
         });
+        $(objthis).parent().hide();
+        $(objthis).parent().parent().find('.inputsend').slideUp('fast');
     }
     else {
 
@@ -880,6 +882,8 @@ function AskNextQuestionCardOption(objthis) {
             error: function (result) {
             }
         });
+
+        $(objthis).parent().parent().hide();
     }
     else {
         var data = GetQuestionById(JData, nextQuestionId);
