@@ -898,7 +898,7 @@ namespace ChatBot.Controllers
                     if (string.IsNullOrEmpty(AnwerVariable.dehydration_lessthan2))
                         AnwerVariable.dehydration_lessthan2 = "";
 
-                    if (AnwerVariable.routineassessment == "Not feeding well or Not able to feed" || AnwerVariable.routineassessment == "Child had convulsions" || AnwerVariable.breathcount > 59)
+                    if (AnwerVariable.routineassessment == "Not feeding well or Not able to feed" || AnwerVariable.routineassessment == "Child had convulsions" || AnwerVariable.breathcount > 59 || AnwerVariable.routineassessment == "Severe chest indrawing" || AnwerVariable.routineassessment == "No movement at all" || AnwerVariable.routineassessment == "Movement on stimulation only" || AnwerVariable.temperature > 37.4m || AnwerVariable.temperature < 35.5m)
                     {
                         SummaryItem obj1 = new SummaryItem();
                         SummaryItem obj2 = new SummaryItem();
@@ -1213,7 +1213,7 @@ namespace ChatBot.Controllers
                     {
                         AnwerVariable.dehydration_graterthan2 = "";
                     }
-                    if (AnwerVariable.gds.Contains("Lethargic or Unconscious") || AnwerVariable.gds.Contains("Not able to drink or breastfeed") || AnwerVariable.gds.Contains("Vomits everything"))
+                    if (AnwerVariable.gds.Contains("Lethargic or Unconscious") || AnwerVariable.gds.Contains("Not able to drink or breastfeed") || AnwerVariable.gds.Contains("Vomits everything") || AnwerVariable.gds.Contains("Convulsion or Had convulsion"))
                     {
                         SummaryItem obj9 = new SummaryItem();
 
@@ -1674,7 +1674,114 @@ namespace ChatBot.Controllers
                     }
                     else
                     {
+                        if (AnwerVariable.odemafeet == "Yes" || AnwerVariable.muac < 11.5m)
+                        {
+                            SummaryItem obj3 = new SummaryItem();
+                            obj3.item = "Child is having Severe Acute Malnutrition<br />";
+                            objItem.Add(obj3);
 
+                            SummaryItem obj4 = new SummaryItem();
+                            obj4.item += "Give first dose of oral Amoxicillin and IM Gentamicin<br />";
+                            obj4.item += "Treat the child to prevent low blood sugar<br />";
+                            obj4.item += "Refer Urgently to Hospital<br />";
+                            obj4.item += "While referral is organized, warm the child<br />";
+                            obj4.item += "Keep the child warm on the way to hospital<br />";
+                            objItem.Add(obj4);
+                        }
+                        else if (AnwerVariable.muac > 11.4m && AnwerVariable.muac < 12.5m)
+                        {
+                            SummaryItem obj3 = new SummaryItem();
+                            obj3.item = "Child is having Moderate Acute Malnutrition<br />";
+                            objItem.Add(obj3);
+
+                            SummaryItem obj4 = new SummaryItem();
+                            obj4.item += "Assess feeding and counsel the mother on how to feed the child<br />";
+                            obj4.item += "Advise mother when to return immediately<br />";
+                            obj4.item += "Follow-up after 30 days<br />";
+                            objItem.Add(obj4);
+                        }
+                        if (AnwerVariable.palm_pallor == "Severe pallor")
+                        {
+                            SummaryItem obj3 = new SummaryItem();
+                            obj3.item = "Child is having Severe Anemia<br />";
+                            objItem.Add(obj3);
+
+                            SummaryItem obj4 = new SummaryItem();
+                            obj4.item += "Refer urgently to hospital<br />";
+                            obj4.item += "Advise mother to continue breast feeding<br />";
+                            obj4.item += "Advise mother how to keep young infant warm on the way to the hospital<br />";
+                            objItem.Add(obj4);
+                        }
+                        else if (AnwerVariable.palm_pallor == "Some pallor")
+                        {
+                            SummaryItem obj3 = new SummaryItem();
+                            obj3.item = "Child is having Anemia<br />";
+                            objItem.Add(obj3);
+
+                            SummaryItem obj4 = new SummaryItem();
+                            obj4.item += "Give Iron folic acid therapy for 60 days<br />";
+                            obj4.item += "Assess child feeding and counsel the mother on child feeding, follow up after 5 days if feeding problem<br />";
+                            obj4.item += "Follow-up after 14 days<br />";
+                            objItem.Add(obj4);
+
+                            if (AnwerVariable.ageinyear == 0 && AnwerVariable.ageinmonth > 1 && AnwerVariable.ageinmonth < 5)
+                            {
+                                SummaryItem obj5 = new SummaryItem();
+                                obj5.item += "Syp Iron Folic Acid 0.5 ml daily (20 mg Elemental iron and 100 mcg folic acid in each ml)";
+                                objItem.Add(obj5);
+                            }
+                            else if (AnwerVariable.ageinyear == 0 && AnwerVariable.ageinmonth > 4 && AnwerVariable.ageinmonth < 12)
+                            {
+                                SummaryItem obj5 = new SummaryItem();
+                                obj5.item += "Syp Iron Folic Acid 1 ml daily (20 mg Elemental iron and 100 mcg folic acid in each ml)";
+                                objItem.Add(obj5);
+                            }
+                            else if (AnwerVariable.ageinyear > 0 && AnwerVariable.ageinyear < 4)
+                            {
+                                SummaryItem obj5 = new SummaryItem();
+                                obj5.item += "Syp Iron Folic Acid 1.25 ml daily (20 mg Elemental iron and 100 mcg folic acid in each ml)";
+                                objItem.Add(obj5);
+                            }
+                            else if (AnwerVariable.ageinyear > 3)
+                            {
+                                SummaryItem obj5 = new SummaryItem();
+                                obj5.item += "Syp Iron Folic Acid 2 ml daily (20 mg Elemental iron and 100 mcg folic acid in each ml)";
+                                objItem.Add(obj5);
+                            }
+                        }
+                        else if (AnwerVariable.palm_pallor == "No pallor")
+                        {
+                            SummaryItem obj3 = new SummaryItem();
+                            obj3.item = "Child does not have Anemia<br />";
+                            objItem.Add(obj3);
+                            if (AnwerVariable.ageinyear == 0 && AnwerVariable.ageinmonth > 5)
+                            {
+                                SummaryItem obj4 = new SummaryItem();
+                                obj4.item += "Give prophylactic Syp iron folic acid<br />";
+                                obj4.item += "Syp Iron Folic Acid 1 ml twice in a week (20 mg Elemental iron and 100 mcg folic acid in each ml)<br />";
+                                objItem.Add(obj4);
+                            }
+                        }
+
+                        if (AnwerVariable.vacforage == "No")
+                        {
+                            SummaryItem obj3 = new SummaryItem();
+                            obj3.item += "Child is not vaccinated for Age<br />";
+                            obj3.item += "Please contact your near health care facility to complete child vaccination<br />";
+                            objItem.Add(obj3);
+                        }
+                        else if (AnwerVariable.vacforage == "No")
+                        {
+                            SummaryItem obj3 = new SummaryItem();
+                            obj3.item += "Child is vaccinated for age< br />";
+                            objItem.Add(obj3);
+                        }
+                        else
+                        {
+                            SummaryItem obj3 = new SummaryItem();
+                            obj3.item += "Child Vaccination status verification is pending< br />";
+                            objItem.Add(obj3);
+                        }
                     }
                 }
             }

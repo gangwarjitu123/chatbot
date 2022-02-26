@@ -65,7 +65,7 @@ namespace ChatBot.Common.ENTITIES
         public string malariardt { get; set; }
         public string odemafeet { get; set; }
         public decimal heightincm { get; set; }
-        public string muac { get; set; }
+        public decimal muac { get; set; }
         public string palm_pallor { get; set; }
 
     }
