@@ -257,7 +257,7 @@ namespace ChatBot.Controllers
                     AnwerVariable.heightincm = Convert.ToDecimal(Data);
                     break;
                 case "muac":
-                    AnwerVariable.muac = Data;
+                    AnwerVariable.muac = Convert.ToDecimal(Data);
                     break;
                 case "palm_pallor":
                     AnwerVariable.palm_pallor = Data;
